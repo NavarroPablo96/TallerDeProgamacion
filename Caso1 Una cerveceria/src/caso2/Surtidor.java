@@ -2,6 +2,12 @@ package caso2;
 
 import excepciones.SurtidorVacioException;
 
+/**
+ * @author Agüero Sebastián, Mujica Juan Manuel, Navarro Pablo, Vucetic Ivo
+ * Invariante de clase: manguera1 y manguera2 deben ser siempre distinto de null
+ * 
+ *
+ */
 public class Surtidor {
 
 	public static Surtidor instance = null;
@@ -92,5 +98,8 @@ public class Surtidor {
 		return this.ultimaventaManguera2;
 	}
 	
-		
+	public void verificaInvariante() {
+		assert this.manguera1 != null: "El atributo manguera1 no debe ser null";
+		assert this.manguera2 != null: "El atributo manguera2 no debe ser null";
+	}
 }
