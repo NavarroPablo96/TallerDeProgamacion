@@ -1,17 +1,28 @@
 package caso2;
 
+import excepciones.SurtidorVacioException;
+
 public class Surtidor {
 
+	public static Surtidor instance = null;
 	private double cantidad_Combustible;
 	private double acumulado_Venta;
 	private double acumuladoManguera1;
 	private double acumuladoManguera2;
 	private double ultimaventaManguera1;
 	private double ultimaventaManguera2;
+	private boolean activoManguera1;
+	private boolean activoManguera2;
 	private static double precio_Litro=80;
 	
-	public Surtidor() {
+	private Surtidor() {
 		super();
+	}
+	
+	public static Surtidor getInstanceSurtidor() {
+		if(Surtidor.instance==null) 
+			Surtidor.instance = new Surtidor();
+		return Surtidor.instance;
 	}
 	
 	public void InicializarSurtidor(double carga) {
@@ -21,42 +32,65 @@ public class Surtidor {
 		this.acumuladoManguera2 = 0;
 		this.ultimaventaManguera1 = 0;
 		this.ultimaventaManguera2 = 0;
+		this.activoManguera1 = false;
+		this.activoManguera2 = false;
 	}
 	
 	public void cargarSurtidor(double carga) {
 		this.cantidad_Combustible += carga;
 	}
 	
-	public String descargaManguera1() {
+	public void descargaManguera1() throws SurtidorVacioException{
 		//va con una excepcion para saber si se puede descargar o no
 		double cantidad_extraida = 0;
-		while(this.cantidad_Combustible >= 1) {
-			this.cantidad_Combustible -= 1;
-			cantidad_extraida += 1;
-			this.acumuladoManguera1 += 1;
-			//wait de 1 segundo
+		
+		if(this.cantidad_Combustible>0) {
+			while(this.cantidad_Combustible >= 1) {
+				this.cantidad_Combustible -= 1;
+				cantidad_extraida += 1;
+				this.acumuladoManguera2 += 1;
+				//wait de 1 segundo
+			}
 		}
-		return "Se extrajo " + this.
+		else 
+			throw new SurtidorVacioException("El surtidor esta vacio");
 	}
 	
-	public String descargaManguera2() {
+	public void descargaManguera2() throws SurtidorVacioException{
 		//va con una excepcion para saber si se puede descargar o no
 		double cantidad_extraida = 0;
-		while(this.cantidad_Combustible >= 1) {
-			this.cantidad_Combustible -= 1;
-			cantidad_extraida += 1;
-			this.acumuladoManguera2 += 1;
-			//wait de 1 segundo
+		
+		if(this.cantidad_Combustible>0) {
+			while(this.cantidad_Combustible >= 1) {
+				this.cantidad_Combustible -= 1;
+				cantidad_extraida += 1;
+				this.acumuladoManguera2 += 1;
+				//wait de 1 segundo
+			}
 		}
-		
-		
-		
+		else 
+			throw new SurtidorVacioException("El surtidor esta vacio");
 	}
 	
+	public boolean getExistenciaDeposito() {
+		return Surtidor.instance!=null;
+	}
 	
+	public double getAcumuladoManguera1(){
+		return this.acumuladoManguera1;
+	}
 	
+	public double getAcumuladoManguera2(){
+		return this.acumuladoManguera2;
+	}
 	
+	public double getUltimaVentaMG1() {
+		return this.ultimaventaManguera1;
+	}
 	
+	public double getUltimaVentaMG2() {
+		return this.ultimaventaManguera2;
+	}
 	
 		
 }
