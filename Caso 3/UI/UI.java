@@ -1,5 +1,6 @@
 package UI;
 
+import Excepciones.LegajoInexistenteException;
 import Negocio.Negocio;
 
 /**
@@ -28,7 +29,14 @@ public class UI
 	 * @param Legajo
 	 */
 	public void pedirCertificado(Integer Legajo) {
-		this.negocio.pedirCertificado(Legajo);
+		try
+		{
+			this.negocio.pedirCertificado(Legajo);
+		} catch (LegajoInexistenteException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void mostrarEstado(String Mensaje) {

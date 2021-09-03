@@ -48,9 +48,12 @@ public class Certificado
 	
 	private String armaCertificado() {
 		byte cont = 0;
-		StringBuilder
+		StringBuilder st = new StringBuilder();
+		
+		st.append(this.toString());
 		
 		for(Materia materia: this.materias) {
+			st.append(materia.toString());
 			if(materia.getEstado().contentEquals("a cursar"))
 				cont++;
 		}
@@ -59,7 +62,16 @@ public class Certificado
 		else
 			this.condicion = "Irregular";
 		
+		st.append(this.condicion);
 		
+		return st.toString();
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "--------Certificado de alumno--------"
+				+ "Nombre y Apellido = " + nombreyapellido + ", Legajo=" + legajo;
 	}
 
 	public String traerApellidoyNombre() {
