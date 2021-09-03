@@ -11,12 +11,14 @@ public class Surtidor {
 	private double acumuladoManguera2;
 	private double ultimaventaManguera1;
 	private double ultimaventaManguera2;
-	private boolean activoManguera1;
-	private boolean activoManguera2;
+	private Manguera manguera1;
+	private Manguera manguera2;
 	private static double precio_Litro=80;
 	
 	private Surtidor() {
 		super();
+		manguera1 = new Manguera();
+		manguera2 = new Manguera();
 	}
 	
 	public static Surtidor getInstanceSurtidor() {
@@ -32,8 +34,6 @@ public class Surtidor {
 		this.acumuladoManguera2 = 0;
 		this.ultimaventaManguera1 = 0;
 		this.ultimaventaManguera2 = 0;
-		this.activoManguera1 = false;
-		this.activoManguera2 = false;
 	}
 	
 	public void cargarSurtidor(double carga) {
