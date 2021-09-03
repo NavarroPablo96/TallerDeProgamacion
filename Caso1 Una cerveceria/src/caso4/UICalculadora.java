@@ -8,6 +8,10 @@ package caso4;
 
 import java.util.Scanner;
 
+import excepciones.ExceptionParametrosIncorrectos;
+import excepciones.ExceptionResultadoImposible;
+import excepciones.ExceptionResultadoNull;
+
 public class UICalculadora {
 	private NegocioCalculadora negocio;
 	

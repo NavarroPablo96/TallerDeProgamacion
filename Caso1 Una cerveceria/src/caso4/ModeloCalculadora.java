@@ -1,4 +1,9 @@
 package caso4;
+
+import excepciones.ExceptionParametrosIncorrectos;
+import excepciones.ExceptionResultadoImposible;
+import excepciones.ExceptionResultadoNull;
+
 /**
  * @author Agüero Sebastián, Mujica Juan Manuel, Navarro Pablo, Vucetic Ivo
  * <br>

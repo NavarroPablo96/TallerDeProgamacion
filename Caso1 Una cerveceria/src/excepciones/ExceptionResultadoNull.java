@@ -1,4 +1,4 @@
-package caso4;
+package excepciones;
 /**
  * @author Agüero Sebastián, Mujica Juan Manuel, Navarro Pablo, Vucetic Ivo
  * <br>
