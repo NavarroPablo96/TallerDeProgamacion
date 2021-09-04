@@ -27,19 +27,22 @@ public class UI
 	 * <b>pos:</b>
 	 * @param Legajo
 	 */
-	public void pedirCertificado(Integer Legajo) {
+	public void pedirCertificado(Integer legajo) {
 		try
 		{
-			this.negocio.pedirCertificado(Legajo);
+			this.negocio.pedirCertificado(legajo);
 		} catch (LegajoInexistenteException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.out.print("---Por favor ingrese un legajo de alumno valido---");
 		}
 	}
 	
-	public void mostrarEstado(String Mensaje) {
-		
+	public void mostrarEstado(String materia) {
+		if(materia != null && !materia.equals(""))
+			this.negocio.traerEstado(materia);
+		else
+			System.out.print("Datos ingresados erroneamente");
 	}
 	
 	public void MostrarCertificado() {

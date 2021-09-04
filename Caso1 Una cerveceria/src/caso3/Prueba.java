@@ -8,6 +8,9 @@ public class Prueba
 	{			
 		//Simula que se esta ingresando por una vista el legajo de un alumno.
 		UI.getInstance().pedirCertificado(345);
+		
+		//Dada una materia que haya cursado un alumno muestra el estado.
+		UI.getInstance().mostrarEstado("Materia");
 	}
 
 }
