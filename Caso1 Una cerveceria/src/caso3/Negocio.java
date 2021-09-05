@@ -4,14 +4,29 @@ import excepciones.CertificadoNoPedidoException;
 import excepciones.LegajoInexistenteException;
 import excepciones.MateriaInexistenteException;
 
+/**
+ * @author Grupo 6
+ *<b>inv:<\b> <br>
+ *certificado != null
+ */
 public class Negocio
 {	
 	public Certificado certificado;
 	
+	/**
+	 * Inicializa el enlace con el modelo.
+	 */
 	public Negocio() {
 		this.certificado = new Certificado();
+		
+		verificarInvariante();
 	}
 	
+    /**
+     * 
+     * @param legajo
+     * @throws LegajoInexistenteException
+     */
     public void pedirCertificado(Integer legajo) throws LegajoInexistenteException {
 		certificado.pedirCertificado(legajo);
 	}
@@ -75,5 +90,9 @@ public class Negocio
 			e.printStackTrace();
 		}
 		return cond;
+	}
+	
+	private void verificarInvariante() {
+		assert certificado != null: "No hay referencia a un certificado";
 	}
 }

@@ -15,6 +15,8 @@ public class UI
 	
 	public UI() {
 		this.negocio = new Negocio();
+		
+		verificarInvariante();
 	}
 	
 	public static UI getInstance() {
@@ -78,5 +80,9 @@ public class UI
 		}
 		
 		System.out.println("-----------Certificado de alumno-----------\n"+ plantilla_cert);
+	}
+	
+	private void verificarInvariante() {
+		assert negocio != null: "No existe controlador";
 	}
 }
