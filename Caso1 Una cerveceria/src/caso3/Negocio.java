@@ -2,6 +2,7 @@ package caso3;
 
 import excepciones.CertificadoNoPedidoException;
 import excepciones.LegajoInexistenteException;
+import excepciones.MateriaInexistenteException;
 
 public class Negocio
 {	
@@ -30,20 +31,49 @@ public class Negocio
 		return apellidoynombre;
 	}
 	
-	public String traerEstado(String materia) {
+	public String traerEstado(String materia) throws CertificadoNoPedidoException, LegajoInexistenteException, MateriaInexistenteException {
 		String estado = null;
 		
-		
-		this.certificado.traerEstado(materia);
+		estado = this.certificado.traerEstado(materia);
 		
 		return estado;
 	}
 	
-	public String traerNota(String materia) {
-		return "hola";
+	public String traerCertificado() throws CertificadoNoPedidoException{
+		return this.certificado.armaCertificado();
+	}
+	
+	public byte traerNota(String materia){
+		byte nota = -1;
+		try
+		{
+			nota = this.certificado.traerNota(materia);
+		} catch (CertificadoNoPedidoException e)
+		{
+			e.printStackTrace();
+		} catch (LegajoInexistenteException e)
+		{
+			e.printStackTrace();
+		} catch (MateriaInexistenteException e)
+		{	
+			//No existe o no esta aprobada la materia.
+			e.printStackTrace();
+		}
+		return nota;
 	}
 	
 	public String traerCondición() {
-		return "hola";
+		String cond = null;
+		try
+		{
+			cond = this.certificado.traerCondición();
+		} catch (CertificadoNoPedidoException e)
+		{
+			e.printStackTrace();
+		} catch (LegajoInexistenteException e)
+		{
+			e.printStackTrace();
+		}
+		return cond;
 	}
 }

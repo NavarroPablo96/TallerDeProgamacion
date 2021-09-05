@@ -5,6 +5,8 @@ import java.util.Iterator;
 
 import excepciones.CertificadoNoPedidoException;
 import excepciones.LegajoInexistenteException;
+import excepciones.MateriaInexistenteException;
+import excepciones.MateriaNoAprobadaException;
 
 public class Certificado
 {
@@ -26,10 +28,8 @@ public class Certificado
 		this.existe_legajo = false; this.cert_pedido = false;
 	}
 
-	public String pedirCertificado(Integer legajo) throws LegajoInexistenteException {
+	public void pedirCertificado(Integer legajo) throws LegajoInexistenteException {
 		Alumno alumno_a_cert = null;
-		
-		this.cert_pedido = true;
 		
 		alumno_a_cert = Institucion.getInstance().buscaAlumno(legajo);
 		
@@ -42,29 +42,33 @@ public class Certificado
 		else
 			throw new LegajoInexistenteException("El legajo no existe!");
 		
-		return armaCertificado(); 	
+		this.cert_pedido = true;
 	}
 	
 	
-	private String armaCertificado() {
+	public String armaCertificado() throws CertificadoNoPedidoException{
 		byte cont = 0;
 		StringBuilder st = new StringBuilder();
 		
-		st.append(this.toString());
+		if(!cert_pedido)
+			throw new CertificadoNoPedidoException("Primero pida un certificado");
+		else {
+			st.append(this.toString());
 		
-		for(Materia materia: this.materias) {
-			st.append(materia.toString());
-			if(materia.getEstado().contentEquals("a cursar"))
-				cont++;
+			for(Materia materia: this.materias) {
+				st.append(materia.toString());
+				if(materia.getEstado().contentEquals("a cursar"))
+					cont++;
+			}
+			if(cont >= 2)
+				this.condicion = "Regular";
+			else
+				this.condicion = "Irregular";
+		
+			st.append(this.condicion);
+		
+			return st.toString();
 		}
-		if(cont >= 2)
-			this.condicion = "Regular";
-		else
-			this.condicion = "Irregular";
-		
-		st.append(this.condicion);
-		
-		return st.toString();
 	}
 	
 	@Override
@@ -81,14 +85,12 @@ public class Certificado
 		else if(!this.existe_legajo) {
 			throw new LegajoInexistenteException("No existe el legajo");
 		}
-		else
-			return this.nombreyapellido;
+		return this.nombreyapellido;
 	}
 	
-	public String traerEstado(String materia) throws CertificadoNoPedidoException, LegajoInexistenteException {
-		Iterator<Materia> it_materia = this.materias.iterator();
-		boolean encuent_mat = false;
-		Materia mat_act = null;
+	public String traerEstado(String materia) throws CertificadoNoPedidoException, LegajoInexistenteException, MateriaInexistenteException {
+		Materia mat = null;
+		Alumno alumno = null;
 		
 		assert materia != null && materia.equals(""): "Datos erroneos de ingreso";
 		
@@ -97,24 +99,44 @@ public class Certificado
 		else if(!this.existe_legajo) {
 			throw new LegajoInexistenteException("No existe el legajo");
 		}
-		else 
-		{
-			while(it_materia.hasNext() && !encuent_mat)
-			{
-				mat_act = it_materia.next();
-				if(mat_act.getNombre().equals(materia))
-					encuent_mat = true;
-			}
+		else {
+			alumno = Institucion.getInstance().buscaAlumno(legajo);
+			mat = alumno.buscaMateria(materia);
+			if(mat == null)
+				throw new MateriaInexistenteException("No existe La materia a buscar en el alumno");
 		}
 		
-		return "hola";
+		return mat.getEstado();
 	}
 	
-	public String traerNota(String Materia) {
-		return "hola";
+	public byte traerNota(String materia) throws CertificadoNoPedidoException, LegajoInexistenteException, MateriaInexistenteException {
+		Materia mat = null;
+		Alumno alumno = null;
+		
+		assert materia != null && materia.equals(""): "Datos erroneos de ingreso";
+		
+		if(!this.cert_pedido)
+		    throw new CertificadoNoPedidoException("No se pidio hacer ningun certificado");
+		else if(!this.existe_legajo) {
+			throw new LegajoInexistenteException("No existe el legajo");
+		}
+		else {
+			alumno = Institucion.getInstance().buscaAlumno(legajo);
+			mat = alumno.buscaMateria(materia);
+			if(mat == null)
+				throw new MateriaInexistenteException("No existe La materia a buscar en el alumno");
+			else if(!mat.getEstado().equals("aprobada"))
+				throw new MateriaNoAprobadaException("Tiene que estar aprobada la materia para dar la nota");
+			}
+		return mat.getNota();
 	}
 	
-	public String traerCondición() {
-		return "hola";
+	public String traerCondición() throws CertificadoNoPedidoException, LegajoInexistenteException{
+		if(!this.cert_pedido)
+		    throw new CertificadoNoPedidoException("No se pidio hacer ningun certificado");
+		else if(!this.existe_legajo) {
+			throw new LegajoInexistenteException("No existe el legajo");
+		}
+		return this.condicion;
 	}
 }

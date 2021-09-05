@@ -10,6 +10,8 @@ public class Materia
 		this.nombre = nombre;
 		this.estado = estado;
 		this.nota = nota;
+		
+		verificarInvariante();
 	}
 
 	public String getNombre()
@@ -40,6 +42,12 @@ public class Materia
 	public void setNota(byte nota)
 	{
 		this.nota = nota;
+	}
+	
+	private void verificarInvariante(){
+		assert nombre != null && !nombre.equals(""): "Ingrese datos validos de nombre de materia";
+		assert estado != null && !estado.equals(""): "Ingrese datos validos de estado";
+		assert nota>0 && nota<=10: "Nota fuera de rango";
 	}
 
 	@Override
