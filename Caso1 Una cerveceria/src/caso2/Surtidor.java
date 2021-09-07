@@ -1,6 +1,5 @@
 package caso2;
 
-import excepciones.CargaImposibleException;
 import excepciones.SurtidorVacioException;
 
 /**
@@ -47,6 +46,7 @@ public class Surtidor {
 			this.acumuladoManguera2 = 0;
 			this.ultimaventaManguera1 = 0;
 			this.ultimaventaManguera2 = 0;	
+		}
 		assert this.cantidad_Combustible<=2000:"La cantidad de combustible debe ser menor o igual a 2000";
 	}
 	
