@@ -81,6 +81,9 @@ public class Negocio {
 	}
 	
 	
+	/** Metodo que se encarga de retornar la existencia del surtidor
+	 * @return devuelve true si existe el surtidor y false en caso contrario
+	 */
 	public boolean getExistenciaDeposito() {
 		if(Surtidor.instance == null)
 			return false;
@@ -88,18 +91,30 @@ public class Negocio {
 			return true;
 	}
 	
+	/**Metodo que se encarga de pedirle a la capa modelo el acumulado de la manguera 1 y devuelve el resultado a la capa ui
+	 * @return devuelve el acumulado de la manguera 1
+	 */
 	public double getAcumuladoManguera1() {
 		return Surtidor.getInstanceSurtidor().getAcumuladoManguera1();
 	}
 	
+	/**Metodo que se encarga de pedirle a la capa modelo el acumulado de la manguera 2 y devuelve el resultado a la capa ui
+	 * @return devuelve el acumulado de la manguera 2
+	 */
 	public double getAcumuladoManguera2() {
 		return Surtidor.getInstanceSurtidor().getAcumuladoManguera2();
 	}
 	
+	/**Metodo que se encarga de pedirle a la capa modelo la ultima venta de la manguera 1 y devuelve el resultado a la capa ui
+	 * @return devuelve la ultima venta de la manguera 1
+	 */
 	public double getUltimaVentaMG1() {
 		return Surtidor.getInstanceSurtidor().getUltimaVentaMG1();
 	}
 	
+	/**Metodo que se encarga de pedirle a la capa modelo la ultima venta de la manguera 2 y devuelve el resultado a la capa ui
+	 * @return devuelve la ultima venta de la manguera 2
+	 */
 	public double getUltimaVentaMG2() {
 		return Surtidor.getInstanceSurtidor().getUltimaVentaMG2();
 	}

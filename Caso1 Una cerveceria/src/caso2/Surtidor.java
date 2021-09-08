@@ -160,10 +160,16 @@ public class Surtidor {
 		return this.ultimaventaManguera2;
 	}
 	
+	/** Metodo que se encarga de activar o desactivar la manguera 1
+	 * @param manguera1Activada parametro que representa si la manguera esta activada o no (true o false)
+	 */
 	public void setManguera1Activada(boolean manguera1Activada) {
 		this.manguera1Activada = manguera1Activada;
 	}
 
+	/** Metodo que se encarga de activar o desactivar la manguera 2
+	 * @param manguera2Activada parametro que representa si la manguera esta activada o no (true o false)
+	 */
 	public void setManguera2Activada(boolean manguera2Activada) {
 		this.manguera2Activada = manguera2Activada;
 	}
