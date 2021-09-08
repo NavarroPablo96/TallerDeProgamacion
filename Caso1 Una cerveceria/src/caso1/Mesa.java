@@ -11,7 +11,6 @@ public class Mesa {
 		Mesa.numeroDeMesa++;
 		this.numero=Mesa.numeroDeMesa;
 		this.ocupada=false;
-		BeerHouse.getInstance().agregarMesa(this);;
 	}
 	
 	public void agregarConsumision(int cantidad, Producto producto) {

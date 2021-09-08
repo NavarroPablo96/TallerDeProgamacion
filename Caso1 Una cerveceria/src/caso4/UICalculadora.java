@@ -17,7 +17,7 @@ public class UICalculadora {
 	
 	
 	/**
-	 * Constructor que crea un nuevo negocio, que es el único atributo que tiene
+	 * Constructor que crea un nuevo negocio, que es el único atributo que tiene la clase UICalculadora
 	 * <br>
 	 * */
 	public UICalculadora() {

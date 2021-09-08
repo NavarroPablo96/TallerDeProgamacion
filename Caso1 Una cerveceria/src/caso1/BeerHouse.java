@@ -9,25 +9,30 @@ import java.util.HashMap;
 import excepciones.MesaNoDisponibleException;
 
 public class BeerHouse {
-	private static BeerHouse instance=null;
+	
 	private int cantidadDeMesasHabilitadas;
 	private int cantidadDeProductos;
 	private HashMap<Integer, Mesa> mesas = new HashMap<Integer,Mesa>();
+	private boolean open=false;
 	
+	
+	public HashMap<Integer, Mesa> getMesas() {
+		return mesas;
+	}
+
+	public boolean isOpen() {
+		return this.open;
+	}
+
 	public int getCantMesasMaxima() {
 		return this.mesas.size();
 	}
 
-	private BeerHouse() {
+	public BeerHouse() {
 		this.cantidadDeMesasHabilitadas=0;
 		this.cantidadDeProductos=0;
 	}
 	
-	public static BeerHouse getInstance() {
-		if(BeerHouse.instance==null)
-			BeerHouse.instance= new BeerHouse();
-		return BeerHouse.instance;
-	}
 	
 	private void desocuparMesas() {
 		Mesa actual=null;
@@ -64,12 +69,15 @@ public class BeerHouse {
 		desocuparMesas();
 		this.cantidadDeProductos=0;
 		this.cantidadDeMesasHabilitadas=cantMesas;
-
+		this.open=true;
+		
 		assert verificaMesasVacias() : "BeerHouse.abrirLocal() Las mesas no están vacias";
 		verificaInvariante();
 	}
 	
-	public void agregarMesa(Mesa mesa) {
+	public void agregarMesa() {
+		Mesa mesa= new Mesa();
+		
 		this.mesas.put(mesa.getNumero(),mesa);
 		
 	}

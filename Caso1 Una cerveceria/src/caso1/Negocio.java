@@ -9,26 +9,42 @@ import excepciones.MesaNoDisponibleException;
  * */
 public class Negocio {
 	
+	private BeerHouse cerveceria=null;
+	
+	public Negocio() {
+		this.cerveceria=new BeerHouse();
+	}
+	
+	public BeerHouse getCerveceria() {
+		return cerveceria;
+	}
+
+	
 	/**
-	 * Metodo abrirLocal 
-	 * <br>
+	 * Metodo abrirLocal <br>
+	 * Delega en la capa de modelo su tarea <br>
+	 * Valida los parametros y los pasa a la capa de modelo <br>
+	 * Si sucede algún excepción se muestra <br>
+	 * 
+	 * <b>Post: </b> Se abrio el negocio <br>
+	 * @throws 
 	 * */
 	public void abrirLocal(int cantMesas)throws CantMesasIncorrectoException  {
 		//cantMesas no está validado
-		if(cantMesas<=0 || cantMesas>BeerHouse.getInstance().getCantMesasMaxima())
+		if(cantMesas<=0 || cantMesas>this.cerveceria.getCantMesasMaxima())
 			throw new CantMesasIncorrectoException("Negocio.abrirLocal() necesita 0<cantMesas<=CantMáxima");
 		
-		BeerHouse.getInstance().abrirLocal(cantMesas);
+		this.cerveceria.abrirLocal(cantMesas);
 		//postCondición se debe abrir el local
 	}
 	
 	public Mesa ocuparMesa(int nroMesa) throws CantMesasIncorrectoException,MesaNoDisponibleException{
 		Mesa act=null;
 		//se debe validad nroMesa
-		if(nroMesa<=0 || nroMesa>BeerHouse.getInstance().getCantidadDeMesasHabilitadas())
+		if(nroMesa<=0 || nroMesa>this.cerveceria.getCantidadDeMesasHabilitadas())
 			throw new CantMesasIncorrectoException("Negocio.ocuparMesa() necesita 0<nroMesa<=CantMesasHabilitadas");
 		
-		act= BeerHouse.getInstance().ocuparMesa(nroMesa);
+		act= this.cerveceria.ocuparMesa(nroMesa);
 		
 		//post Condicion:
 		assert act!=null : "Negocio.ocuparMesa() la mesa no fue creada";
@@ -37,10 +53,10 @@ public class Negocio {
 	
 	public double cerrarMesa(int nroMesa)throws CantMesasIncorrectoException {
 		//se debe validar nroMesa
-		if(nroMesa<=0 || nroMesa>BeerHouse.getInstance().getCantidadDeMesasHabilitadas())
+		if(nroMesa<=0 || nroMesa>this.cerveceria.getCantidadDeMesasHabilitadas())
 			throw new CantMesasIncorrectoException("Negocio.ocuparMesa() necesita 0<nroMesa<=CantMesasHabilitadas");
 		
-		double act= BeerHouse.getInstance().cerrarMesa(nroMesa);
+		double act= this.cerveceria.cerrarMesa(nroMesa);
 		
 		assert act>=0 : "Negocio.ocuparMesa() importe total negativo";
 		return act;
