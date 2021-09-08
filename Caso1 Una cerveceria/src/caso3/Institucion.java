@@ -3,7 +3,7 @@ package caso3;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import Excepciones.LegajoInexistenteException;
+import excepciones.LegajoInexistenteException;
 
 /**
  * @author Grupo 6
