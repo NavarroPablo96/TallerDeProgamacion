@@ -1,4 +1,4 @@
-package modelo;
+package caso1;
 import excepciones.CantMesasIncorrectoException;
 import excepciones.MesaNoDisponibleException;
 

@@ -1,4 +1,4 @@
-package modelo;
+package caso1;
 /**
  * @author Agüero Sebastián, Mujica Juan Manuel, Navarro Pablo, Vucetic Ivo
  * <br>

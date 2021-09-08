@@ -1,4 +1,4 @@
-package modelo;
+package caso1;
 
 import java.util.Scanner;
 import excepciones.CantMesasIncorrectoException;

@@ -1,4 +1,4 @@
-package modelo;
+package caso1;
 
 public class Producto {
 	private double precio;
