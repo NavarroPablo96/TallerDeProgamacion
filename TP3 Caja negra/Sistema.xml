@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_271" class="java.beans.XMLDecoder">
+ <object class="modelo.Sistema" id="Sistema0">
+  <void id="IndiceDoble0" property="alumnos">
+   <void id="IndicePrimario0" property="indice1">
+    <void property="elementos">
+     <void method="put">
+      <string>ALU0001</string>
+      <object class="modelo.Alumno" id="Alumno0">
+       <void property="apellidoNombre">
+        <string>Sujeto1</string>
+       </void>
+       <void property="domicilio">
+        <string>Sujeto2</string>
+       </void>
+       <void property="historia">
+        <object class="modelo.IndicePrimario"/>
+       </void>
+       <void property="legajo">
+        <string>ALU0001</string>
+       </void>
+       <void property="mail">
+        <string>Sujeto3@gmail.com</string>
+       </void>
+      </object>
+     </void>
+    </void>
+   </void>
+   <void property="indice2">
+    <void method="put">
+     <string>Sujeto1</string>
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object idref="Alumno0"/>
+      </void>
+     </object>
+    </void>
+   </void>
+  </void>
+ </object>
+ <int>1</int>
+ <int>0</int>
+ <int>0</int>
+ <int>0</int>
+</java>
