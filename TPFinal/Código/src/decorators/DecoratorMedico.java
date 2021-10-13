@@ -1,11 +1,14 @@
 package decorators;
+
+import java.io.Serializable;
+
 /**
  * @author Imanol Vázquez,Juan Manuel Mujica,Francisco Stimmler,Sebastian Agüero   
  *<br>
  *Se utiliza el Patrón Decorator.
  *Clase abstacta padre de todos los decoradores de medico
  */
-public abstract class DecoratorMedico implements IMedico{
+public abstract class DecoratorMedico implements IMedico,Serializable{
 
     /**
      * @aggregation shared

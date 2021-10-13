@@ -30,45 +30,72 @@ import persistencia.Persistencia;
 public class PruebaClinica {
 
 	public static void main(String[] args) {
+//		
 		IPersistencia<Serializable> persistencia = new Persistencia();
-		HashMap<String, Paciente> pacientes = new HashMap<String, Paciente>();
+		HashMap<String,Paciente> pacientes = null;
 		
-		Paciente p1 = new Joven("111", "Seba", "A", "112233", "mdp", "123", 123123);
-		Paciente p2 = new Mayor("222", "Ima", "V", "445566", "balcarce", "456", 456456);
-		IMedico Medico1 = MedicoFactory.getMedico("Pediatria","Residente","Magister", "11234532", "Pepe", "Pepe", "San Luis 1234", "Batan", "5551234", 2345);
-		IMedico Medico2 = MedicoFactory.getMedico("Cirugia","Residente","Magister", "88234532", "Lolo", "Lolo", "San Juan 8234", "Miramar", "8881234", 8888);
-		
-		ConsultaMedica pr1= new ConsultaMedica(4,Medico1);
-		ConsultaMedica pr2= new ConsultaMedica(3,Medico2);
-		System.out.println("Hasta aca todo bien");
-		HashMap<String, Prestacion> prestaciones1 = new HashMap<String, Prestacion>();
-		HashMap<String, Prestacion> prestaciones2 = new HashMap<String, Prestacion>();
-		
-		prestaciones1.put(pr1.getMedico().getNombre(), pr1);
-		prestaciones2.put(pr2.getMedico().getNombre(), pr2);
-		
-		p1.agregarPrestaciones(prestaciones1);
-		p2.agregarPrestaciones(prestaciones2);
-		
-		pacientes.put(p1.getDni(),p1);
-		pacientes.put(p2.getDni(),p2);
-		
-		
-		Clinica.getInstance().setPacientesRegistrados(pacientes);
-		
-		try
+        try
         {
-            persistencia.abrirOutput("Pacientes.bin");
-            System.out.println("Se creo el archivo para persistir");
-            persistencia.escribir(pacientes);
-            persistencia.cerrarOutput();
-            System.out.println("Se cerro la salida");
-        } 
-        catch (IOException e)
+            persistencia.abrirInput("Pacientes.dat");
+            System.out.println("Se abrio la entrada.");
+            //Aca va la estructura
+           pacientes=(HashMap<String,Paciente>)persistencia.leer();
+            persistencia.cerrarInput();
+            System.out.println("Se cerro la entrada");
+        } catch (ClassNotFoundException e)
         {
-            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e)
+        {
             e.printStackTrace();
         }
+		
+    		for(Paciente i:pacientes.values()) {
+    			System.out.println(i.toString());
+    			for(Prestacion j:i.getPrestaciones()) {
+    				System.out.println(j.toString());
+    			}
+    		}
+		
+		
+//		IPersistencia<Serializable> persistencia = new Persistencia();
+//		HashMap<String, Paciente> pacientes = new HashMap<String, Paciente>();
+//		
+//		Paciente p1 = new Joven("111", "Seba", "A", "112233", "mdp", "123");
+//		Paciente p2 = new Mayor("222", "Ima", "V", "445566", "balcarce", "456");
+//		IMedico Medico1 = MedicoFactory.getMedico("Pediatria","Residente","Magister", "11234532", "Pepe", "Pepe", "San Luis 1234", "Batan", "5551234", 2345);
+//		IMedico Medico2 = MedicoFactory.getMedico("Cirugia","Residente","Magister", "88234532", "Lolo", "Lolo", "San Juan 8234", "Miramar", "8881234", 8888);
+//		
+//		ConsultaMedica pr1= new ConsultaMedica(4,Medico1);
+//		ConsultaMedica pr2= new ConsultaMedica(3,Medico2);
+//		HashMap<String, Prestacion> prestaciones1 = new HashMap<String, Prestacion>();
+//		HashMap<String, Prestacion> prestaciones2 = new HashMap<String, Prestacion>();
+//		
+//		prestaciones1.put(pr1.getMedico().getNombre(), pr1);
+//		prestaciones2.put(pr2.getMedico().getNombre(), pr2);
+//		
+//		p1.agregarPrestaciones(prestaciones1);
+//		p2.agregarPrestaciones(prestaciones2);
+//		
+//		pacientes.put(p1.getDni(),p1);
+//		pacientes.put(p2.getDni(),p2);
+//		
+//		
+//		Clinica.getInstance().setPacientesRegistrados(pacientes);
+//		
+//		try
+//        {
+//            persistencia.abrirOutput("Pacientes.dat");
+//            System.out.println("Se creo el archivo para persistir");
+//            persistencia.escribir(pacientes);
+//            persistencia.cerrarOutput();
+//            System.out.println("Se cerro la salida");
+//        } 
+//        catch (IOException e)
+//        {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
 		
 //		Habitacion.setCostoAsignacion(1000);
 //		Compartida.setCostoCompartida(500);

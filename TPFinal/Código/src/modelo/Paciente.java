@@ -9,6 +9,10 @@ import java.util.HashMap;
  *
  */
 public abstract class Paciente extends Persona implements IRangoEtario{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static long siguienteNumero = 0;
 	private long nroHistoria;
 	private ArrayList<Prestacion> prestaciones = new ArrayList<Prestacion>();
@@ -52,6 +56,14 @@ public abstract class Paciente extends Persona implements IRangoEtario{
 		this.nroHistoria = Paciente.siguienteNumero;
 	}
 	
+	public ArrayList<Prestacion> getPrestaciones() {
+		return prestaciones;
+	}
+
+	public void setPrestaciones(ArrayList<Prestacion> prestaciones) {
+		this.prestaciones = prestaciones;
+	}
+
 	public long getNroHistoria() {
 		return nroHistoria;
 	}
@@ -73,4 +85,13 @@ public abstract class Paciente extends Persona implements IRangoEtario{
 			this.prestaciones.add(i);
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Paciente [nroHistoria=" + nroHistoria + ", getDni()=" + getDni()
+				+ ", getNombre()=" + getNombre() + ", getApellido()=" + getApellido() + ", getDomicilio()="
+				+ getDomicilio() + ", getCiudad()=" + getCiudad() + "]";
+	}
+	
+	
 }

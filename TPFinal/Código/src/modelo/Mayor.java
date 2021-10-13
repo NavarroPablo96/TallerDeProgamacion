@@ -12,6 +12,9 @@ public class Mayor extends Paciente {
 		super(dni, nombre, apellido, domicilio, ciudad, telefono, nroHistoria);
 	}
 
+	public Mayor(String dni, String nombre, String apellido, String domicilio, String ciudad, String telefono) {
+		super(dni, nombre, apellido, domicilio, ciudad, telefono);
+	}
 	/**
 	 * Se sobreescribe el método que decide quién tiene prioridad para quedarse en la sala privada de la clínica, si el paciente que ya estaba allí o el que recién llega.
 	 * <br>

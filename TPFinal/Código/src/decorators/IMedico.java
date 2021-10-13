@@ -4,7 +4,7 @@ package decorators;
  *<br>
  *Interfaz que representa los medicos decorados
  */
-public interface IMedico {
+public interface IMedico{
 
 long getNroMatricula();
 double getHonorario();
