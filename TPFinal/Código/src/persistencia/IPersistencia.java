@@ -2,7 +2,6 @@ package persistencia;
 
 import java.io.IOException;
 
-import java.io.Serializable;
 
 public interface IPersistencia <E>{
 	
@@ -10,9 +9,9 @@ public interface IPersistencia <E>{
 	
 	void abrirOutput(String nombre) throws IOException;
 	
-	void cerrarInput(String nombre) throws IOException;
+	void cerrarInput() throws IOException;
 	
-	void cerrarOutput(String nombre) throws IOException;
+	void cerrarOutput() throws IOException;
 	
 	void escribir(E objeto) throws IOException;
 	

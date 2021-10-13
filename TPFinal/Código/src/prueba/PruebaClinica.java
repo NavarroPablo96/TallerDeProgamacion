@@ -1,37 +1,74 @@
 package prueba;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.io.IOException;
+import java.io.Serializable;
+//import java.util.Calendar;
+//import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 import decorators.IMedico;
-import excepciones.NoEstaPacienteException;
-import excepciones.NoHayConsultaException;
-import excepciones.OrdenFechasIncorrectoException;
 import modelo.Clinica;
-import modelo.Compartida;
 import modelo.ConsultaMedica;
-import modelo.Factura;
-import modelo.Habitacion;
-import modelo.Internacion;
 import modelo.Joven;
 import modelo.Mayor;
-import modelo.Medico;
 import modelo.MedicoFactory;
-import modelo.Paciente;
 import modelo.Prestacion;
-import modelo.Privada;
-import modelo.TerapiaIntensiva;
+import modelo.Paciente;
+import persistencia.IPersistencia;
+import persistencia.Persistencia;
+//import excepciones.NoEstaPacienteException;
+//import excepciones.NoHayConsultaException;
+//import excepciones.OrdenFechasIncorrectoException;
+//import modelo.Compartida;
+//import modelo.Factura;
+//import modelo.Habitacion;
+//import modelo.Internacion;
+//import modelo.Medico;
+//import modelo.Privada;
+//import modelo.TerapiaIntensiva;
 
 public class PruebaClinica {
 
 	public static void main(String[] args) {
-		HashMap<String, Paciente> pac = new HashMap<String, Paciente>();
+		IPersistencia<Serializable> persistencia = new Persistencia();
+		HashMap<String, Paciente> pacientes = new HashMap<String, Paciente>();
+		
 		Paciente p1 = new Joven("111", "Seba", "A", "112233", "mdp", "123", 123123);
 		Paciente p2 = new Mayor("222", "Ima", "V", "445566", "balcarce", "456", 456456);
-		pac.put(p1.getDni(),p1);
-		pac.put(p2.getDni(),p2);
-		Clinica.getInstance().setPacientesRegistrados(pac);
+		IMedico Medico1 = MedicoFactory.getMedico("Pediatria","Residente","Magister", "11234532", "Pepe", "Pepe", "San Luis 1234", "Batan", "5551234", 2345);
+		IMedico Medico2 = MedicoFactory.getMedico("Cirugia","Residente","Magister", "88234532", "Lolo", "Lolo", "San Juan 8234", "Miramar", "8881234", 8888);
+		
+		ConsultaMedica pr1= new ConsultaMedica(4,Medico1);
+		ConsultaMedica pr2= new ConsultaMedica(3,Medico2);
+		System.out.println("Hasta aca todo bien");
+		HashMap<String, Prestacion> prestaciones1 = new HashMap<String, Prestacion>();
+		HashMap<String, Prestacion> prestaciones2 = new HashMap<String, Prestacion>();
+		
+		prestaciones1.put(pr1.getMedico().getNombre(), pr1);
+		prestaciones2.put(pr2.getMedico().getNombre(), pr2);
+		
+		p1.agregarPrestaciones(prestaciones1);
+		p2.agregarPrestaciones(prestaciones2);
+		
+		pacientes.put(p1.getDni(),p1);
+		pacientes.put(p2.getDni(),p2);
+		
+		
+		Clinica.getInstance().setPacientesRegistrados(pacientes);
+		
+		try
+        {
+            persistencia.abrirOutput("Pacientes.bin");
+            System.out.println("Se creo el archivo para persistir");
+            persistencia.escribir(pacientes);
+            persistencia.cerrarOutput();
+            System.out.println("Se cerro la salida");
+        } 
+        catch (IOException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 		
 //		Habitacion.setCostoAsignacion(1000);
 //		Compartida.setCostoCompartida(500);

@@ -1,5 +1,7 @@
 package modelo;
 
+import java.io.Serializable;
+
 /**
  * @author Imanol Vázquez,Juan Manuel Mujica,Francisco Stimmler,Sebastian Agüero
  * Clase abstracta de una Prestacion

@@ -2,7 +2,10 @@ package persistencia;
 
 import java.util.HashMap;
 
-import modelo.*;
+import modelo.Clinica;
+import modelo.Joven;
+import modelo.Mayor;
+import modelo.Paciente;
 
 
 

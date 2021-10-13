@@ -196,5 +196,12 @@ public class Clinica {
 		else
 			throw new OrdenFechasIncorrectoException("El orden de las fechas ingresadas es incorrecto.");
 	}
+
+	public void setPacientesRegistrados(HashMap<String, Paciente> pac) {
+		// TODO Auto-generated method stub
+		for(HashMap.Entry<String,Paciente> i:pac.entrySet()) {
+			this.pacientesRegistrados.put(i.getKey(),i.getValue());
+		}
+	}
 	
 }

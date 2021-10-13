@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -68,7 +69,7 @@ public abstract class Paciente extends Persona implements IRangoEtario{
 	}
 	
 	public void agregarPrestaciones(HashMap<String, Prestacion> prestaciones) {
-		for(Prestacion i:prestaciones) {
+		for(Prestacion i:prestaciones.values()) {
 			this.prestaciones.add(i);
 		}
 	}
