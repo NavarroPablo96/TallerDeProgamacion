@@ -19,8 +19,8 @@ public class Factura implements Comparable{
      * @aggregation shared
      */
     private Paciente paciente;
-	private HashMap<String, Prestacion> prestaciones = new HashMap<String, Prestacion>();
-	private double total;
+	
+	private double total;private HashMap<String, Prestacion> prestaciones = new HashMap<String, Prestacion>();
 	
 	/**
      * Constructor con dos parametros para setear el paciente al que se le adjudica la factura y su lista de prestaciones.<br>

@@ -140,6 +140,7 @@ public class Clinica {
 	public void EgresoYFacturacion(Paciente paciente, HashMap<String, Prestacion> prestaciones) throws NoEstaPacienteException{
 		if (listaAtencion.containsKey(paciente.getNroHistoria())) {
 			Factura f = new Factura(paciente, prestaciones);
+			paciente.agregarPrestaciones(prestaciones);
 			this.facturas.add(f);
 			f.mostrarFactura();
 			listaAtencion.remove(paciente.getNroHistoria());

@@ -5,7 +5,7 @@ package modelo;
  * Clase abstracta de una Prestacion
  *
  */
-public abstract class Prestacion {
+public abstract class Prestacion implements Serializable {
 
 	private int cantidad;
 	protected double subtotal;

@@ -25,6 +25,7 @@ public class ConsultaMedica extends Prestacion {
 		super(cantidad);
 		this.medico = medico;
 		super.subtotal = ConsultaMedica.valorConsulta * cantidad + this.medico.getHonorario() * ConsultaMedica.porcentajeExtra;
+		//medico.agregarConsulta(this);
 	}
 	
 	public IMedico getMedico() {

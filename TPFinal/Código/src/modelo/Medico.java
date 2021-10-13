@@ -10,7 +10,7 @@ public class Medico extends Persona implements IMedico{
 	
 	private long nroMatricula;
 	private static double honorarioBase;
-
+	//private Hashmap
 	/**
 	 * Constructor con siete parametros para setear el medico
 	 * <br>
@@ -41,4 +41,6 @@ public class Medico extends Persona implements IMedico{
 	public double getHonorario() {
 		return honorarioBase;
 	}
+	
+	//public void agregarconsulta()
 }

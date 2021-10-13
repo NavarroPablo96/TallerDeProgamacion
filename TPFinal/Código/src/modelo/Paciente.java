@@ -1,13 +1,17 @@
 package modelo;
 
+import java.util.HashMap;
+
 /**
- * @author Imanol Vázquez,Juan Manuel Mujica,Francisco Stimmler,Sebastian Agüero
+ * @author Imanol Vázquez,Juan Manuel Mujica,Francisco Stimmler,Sebástian Agüero
  * Clase abstracta Paciente que se extiende de Persona e implementa la interfaz IRangoEtario
  *
  */
 public abstract class Paciente extends Persona implements IRangoEtario{
 	private static long siguienteNumero = 0;
 	private long nroHistoria;
+	private ArrayList<Prestacion> prestaciones = new ArrayList<Prestacion>();
+	
 	
 	/**
 	 * Constructor de la clase con 7 parametros donde se setean los atributos de un paciente, se usa super para llamar al constructor
@@ -63,4 +67,9 @@ public abstract class Paciente extends Persona implements IRangoEtario{
 		return super.getDni().equals(otro.getDni());
 	}
 	
+	public void agregarPrestaciones(HashMap<String, Prestacion> prestaciones) {
+		for(Prestacion i:prestaciones) {
+			this.prestaciones.add(i);
+		}
+	}
 }
