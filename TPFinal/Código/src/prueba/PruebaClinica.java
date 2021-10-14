@@ -41,7 +41,7 @@ public class PruebaClinica {
 //		ConsultaMedica.setPorcentajeExtra(90);
 //		Medico.setHonorarioBase(1200);
 ////		
-//		HashMap<String, Paciente> pacientes = new HashMap<String, Paciente>();
+//		HashMap<Long, Paciente> pacientes = new HashMap<Long, Paciente>();
 //		HashMap<Long,IMedico> medicos = new HashMap<Long,IMedico>(); 
 //		
 //		Paciente p1 = new Joven("111", "Seba", "A", "112233", "mdp", "123");
@@ -71,8 +71,8 @@ public class PruebaClinica {
 //		medicos.put(Medico1.getNroMatricula(), Medico1);
 //		medicos.put(Medico2.getNroMatricula(), Medico2);
 //		
-//		pacientes.put(p1.getDni(),p1);
-//		pacientes.put(p2.getDni(),p2);
+//		pacientes.put(p1.getnroHistoria(),p1);
+//		pacientes.put(p2.getnroHistoria(),p2);
 //		Clinica.getInstance().Ingreso(p1);
 //		Clinica.getInstance().Ingreso(p2);
 //		
@@ -95,7 +95,7 @@ public class PruebaClinica {
 //		PersistenciaGeneral.guardaInformacionMedicos(medicos);
 //		PersistenciaGeneral.guardaInformacionFacturas(Clinica.getInstance().getFacturas());
 		
-		HashMap<String, Paciente> pacientesdes = PersistenciaGeneral.recuperaInformacionPacientes();
+		HashMap<Long, Paciente> pacientesdes = PersistenciaGeneral.recuperaInformacionPacientes();
 		HashMap<Long,IMedico> medicosdes = null; 
 		TreeSet<Factura> facturasdes = null;
 		

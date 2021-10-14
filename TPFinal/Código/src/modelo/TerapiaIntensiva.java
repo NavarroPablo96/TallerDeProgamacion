@@ -10,7 +10,7 @@ public class TerapiaIntensiva extends Habitacion {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static double costoTerapiaIntensiva = 0;
+	private double costoTerapiaIntensiva = 0;
 	/**
 	 * Constructor con un parametro para setear la habitacion de terapia intensiva.
 	 * <br>
@@ -21,8 +21,8 @@ public class TerapiaIntensiva extends Habitacion {
 		super(numeroHabitacion);
 	}
 	
-	public static void setCostoTerapiaIntensiva(double costo) {
-		TerapiaIntensiva.costoTerapiaIntensiva = costo;
+	public void setCostoTerapiaIntensiva(double costo) {
+		this.costoTerapiaIntensiva = costo;
 	}
 	
 	@Override
@@ -39,7 +39,7 @@ public class TerapiaIntensiva extends Habitacion {
 	 */	
 	@Override
 	public double getCosto(int dias) {
-		return Habitacion.costoAsignacion + Math.pow(costoTerapiaIntensiva, dias);
+		return this.costoAsignacion + Math.pow(this.costoTerapiaIntensiva, dias);
 	}
 
 }

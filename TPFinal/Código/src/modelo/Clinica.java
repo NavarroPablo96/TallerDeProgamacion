@@ -45,7 +45,7 @@ public class Clinica {
     private Queue<Paciente> listaEspera = new LinkedList();
 	private HashMap<Long,Paciente> listaAtencion = new HashMap<Long,Paciente>();
 	private HashMap<Long,Habitacion> habitaciones = new HashMap<Long,Habitacion>();
-	private HashMap<String,Paciente> pacientesRegistrados = new HashMap<String,Paciente>();
+	private HashMap<Long,Paciente> pacientesRegistrados = new HashMap<Long,Paciente>();
 	private HashMap<Long,Medico> medicos = new HashMap<Long,Medico>();
 
     /**
@@ -106,8 +106,8 @@ public class Clinica {
 	 */
 	
 	public void Ingreso(Paciente paciente) {
-		if (!pacientesRegistrados.containsKey(paciente.getDni()))
-			pacientesRegistrados.put(paciente.getDni(), paciente);
+		if (!pacientesRegistrados.containsKey(paciente.getNroHistoria()))
+			pacientesRegistrados.put(paciente.getNroHistoria(), paciente);
 		listaEspera.add(paciente);
 		if (this.salaPrivada == null || paciente.prioridad(salaPrivada))
 			salaPrivada = paciente;
@@ -198,9 +198,9 @@ public class Clinica {
 			throw new OrdenFechasIncorrectoException("El orden de las fechas ingresadas es incorrecto.");
 	}
 
-	public void setPacientesRegistrados(HashMap<String, Paciente> pac) {
+	public void setPacientesRegistrados(HashMap<Long, Paciente> pac) {
 		// TODO Auto-generated method stub
-		for(HashMap.Entry<String,Paciente> i:pac.entrySet()) {
+		for(HashMap.Entry<Long,Paciente> i:pac.entrySet()) {
 			this.pacientesRegistrados.put(i.getKey(),i.getValue());
 		}
 	}

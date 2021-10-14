@@ -16,14 +16,14 @@ import modelo.Paciente;
 
 public class PersistenciaGeneral {
 	
-	public static HashMap<String,Paciente> recuperaInformacionPacientes(){
+	public static HashMap<Long,Paciente> recuperaInformacionPacientes(){
 		
 		IPersistencia<Serializable> persistencia = new Persistencia();
-		HashMap<String,Paciente> pacientes = null;
+		HashMap<Long,Paciente> pacientes = null;
         try
         {
             persistencia.abrirInput("Pacientes.dat");
-            pacientes=(HashMap<String, Paciente>) persistencia.leer();
+            pacientes=(HashMap<Long, Paciente>) persistencia.leer();
             persistencia.cerrarInput();
         } catch (ClassNotFoundException e)
         {
@@ -35,7 +35,7 @@ public class PersistenciaGeneral {
         return pacientes;
 	}
 	
-	public static void guardaInformacionPacientes(HashMap<String, Paciente> pacientes) {
+	public static void guardaInformacionPacientes(HashMap<Long, Paciente> pacientes) {
 		 IPersistencia<Serializable>  persistencia = new Persistencia();
 		 
 		try

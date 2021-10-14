@@ -16,8 +16,8 @@ public class ConsultaMedica extends Prestacion {
      * @aggregation shared
      */
     private transient IMedico medico;
-	private static double valorConsulta = 800;
-	private static double porcentajeExtra = 1.2;
+	private double valorConsulta = 800;
+	private double porcentajeExtra = 1.2;
 
 	/**
      * Constructor con dos parametros para setear la cantidad de consultas y el médico que las atendió.<br>
@@ -28,7 +28,7 @@ public class ConsultaMedica extends Prestacion {
 	public ConsultaMedica(int cantidad, IMedico medico) {
 		super(cantidad);
 		this.medico = medico;
-		super.subtotal = ConsultaMedica.valorConsulta * cantidad + this.medico.getHonorario() * ConsultaMedica.porcentajeExtra;
+		super.subtotal = this.valorConsulta * cantidad + this.medico.getHonorario() * this.porcentajeExtra;
 		//medico.agregarConsulta(this);
 	}
 	
@@ -36,17 +36,17 @@ public class ConsultaMedica extends Prestacion {
 		return medico;
 	}
 
-	public static void setValorConsulta(double valor) {
-		ConsultaMedica.valorConsulta = valor;
+	public void setValorConsulta(double valor) {
+		this.valorConsulta = valor;
 	}
 	
-	public static void setPorcentajeExtra(double porcentaje) {
-		ConsultaMedica.porcentajeExtra = 1 + porcentaje/100;
+	public void setPorcentajeExtra(double porcentaje) {
+		this.porcentajeExtra = 1 + porcentaje/100;
 	}
 	
 	@Override
 	public String toString() {
-		return this.medico.getNombre() + " \t\t " + ConsultaMedica.valorConsulta + " \t\t " + super.getCantidad() + " \t\t " + super.subtotal + "\n";
+		return this.medico.getNombre() + " \t\t " + this.valorConsulta + " \t\t " + super.getCantidad() + " \t\t " + super.subtotal + "\n";
 	}
 
 	@Override

@@ -15,7 +15,7 @@ public class Medico extends Persona implements IMedico{
 	 */
 	private static final long serialVersionUID = 1L;
 	private long nroMatricula;
-	private static double honorarioBase;
+	private double honorarioBase;
 	private ArrayList<ConsultaMedica> consultas = new ArrayList<ConsultaMedica>();
 	/**
 	 * Constructor con siete parametros para setear el medico
@@ -34,8 +34,8 @@ public class Medico extends Persona implements IMedico{
 		this.nroMatricula = nroMatricula; 
 	}
 
-	public static void setHonorarioBase(double h) {
-		Medico.honorarioBase = h;
+	public void setHonorarioBase(double h) {
+		this.honorarioBase = h;
 	}
 	
 	@Override

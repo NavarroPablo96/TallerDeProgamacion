@@ -10,7 +10,7 @@ public class Compartida extends Habitacion {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static double costoCompartida = 0;
+	private double costoCompartida = 0;
 	/**
 	 * Constructor con un parametro para setear la habitacion compartida.
 	 * <br>
@@ -22,10 +22,10 @@ public class Compartida extends Habitacion {
 		super(numeroHabitacion);
 	}
 	
-	public static void setCostoCompartida(double costo) {
-		Compartida.costoCompartida = costo;
-	}
-	
+//	public static void setCostoCompartida(double costo) {
+//		Compartida.costoCompartida = costo;
+//	}
+//	
 	@Override
 	public double getCostoHabitacion() {
 		return costoCompartida;
@@ -40,7 +40,7 @@ public class Compartida extends Habitacion {
 	 */
 	@Override
 	public double getCosto(int dias) {
-		return Habitacion.costoAsignacion + costoCompartida * dias;
+		return this.costoAsignacion + costoCompartida * dias;
 	}
 
 }
