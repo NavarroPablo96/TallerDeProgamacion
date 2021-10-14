@@ -9,6 +9,10 @@ import java.io.Serializable;
  */
 public abstract class Prestacion implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int cantidad;
 	protected double subtotal;
 	

@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.Set;
+
+import modelo.Factura;
 
 public class Persistencia implements IPersistencia<Serializable> {
 	

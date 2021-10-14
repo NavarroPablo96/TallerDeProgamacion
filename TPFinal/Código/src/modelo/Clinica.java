@@ -51,8 +51,9 @@ public class Clinica {
     /**
      * @aggregation composite
      */
-    public Set<Factura> facturas = new TreeSet<>();
+    private TreeSet<Factura> facturas = new TreeSet<>();
 	
+
 	DecimalFormat df = new DecimalFormat("#.00");
 	
 	/**
@@ -204,4 +205,8 @@ public class Clinica {
 		}
 	}
 	
+	public TreeSet<Factura> getFacturas() {
+		return facturas;
+	}
+
 }

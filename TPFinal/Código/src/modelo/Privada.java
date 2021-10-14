@@ -6,6 +6,10 @@ package modelo;
  */
 public class Privada extends Habitacion {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static double costoPrivada = 0;
 	/**
 	 * Constructor con un parametro para setear la habitacion privada.

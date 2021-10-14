@@ -6,6 +6,10 @@ package modelo;
  */
 public class TerapiaIntensiva extends Habitacion {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static double costoTerapiaIntensiva = 0;
 	/**
 	 * Constructor con un parametro para setear la habitacion de terapia intensiva.

@@ -8,6 +8,11 @@ package modelo;
 
 public class Niño extends Paciente {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Niño(String dni, String nombre, String apellido, String domicilio, String ciudad, String telefono, long nroHistoria) {
 		super(dni, nombre, apellido, domicilio, ciudad, telefono, nroHistoria);
 	}

@@ -1,12 +1,19 @@
 package modelo;
+
+import java.io.Serializable;
+
 /**
  * @author Imanol Vázquez,Juan Manuel Mujica,Francisco Stimmler,Sebastian Agüero   
  *<br>
  *Clase abstracta que representa una habitacion
  */
-public abstract class Habitacion {
+public abstract class Habitacion implements Serializable {
 	
-	protected static double costoAsignacion;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	protected final double costoAsignacion=1000;
 	private String numeroHabitacion;
 	/**
 	 * Constructor con un parametro para setear la habitacion<br>
@@ -18,11 +25,11 @@ public abstract class Habitacion {
 		this.numeroHabitacion = numeroHabitacion;
 	}
 
-	public static void setCostoAsignacion(double costo) {
-			Habitacion.costoAsignacion = costo;
-	}
+//	public static void setCostoAsignacion(double costo) {
+//			Habitacion.costoAsignacion = costo;
+//	}
 	
-	public static double getCostoasignacion() {
+	public double getCostoasignacion() {
 		return costoAsignacion;
 	}
 

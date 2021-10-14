@@ -9,9 +9,13 @@ import decorators.IMedico;
  */
 public class ConsultaMedica extends Prestacion {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * @aggregation shared
      */
-    private IMedico medico;
+    private transient IMedico medico;
 	private static double valorConsulta = 800;
 	private static double porcentajeExtra = 1.2;
 

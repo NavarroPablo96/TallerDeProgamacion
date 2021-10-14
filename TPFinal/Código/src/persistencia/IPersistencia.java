@@ -1,6 +1,9 @@
 package persistencia;
 
 import java.io.IOException;
+import java.util.Set;
+
+import modelo.Factura;
 
 
 public interface IPersistencia <E>{

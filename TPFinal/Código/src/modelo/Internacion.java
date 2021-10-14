@@ -8,6 +8,10 @@ package modelo;
 public class Internacion extends Prestacion {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * @aggregation shared
      */
     private Habitacion habitacion;

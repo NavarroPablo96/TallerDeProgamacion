@@ -9,6 +9,11 @@ package modelo;
 public class Joven extends Paciente {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Constructor de 7 parámetros donde se setean los atributos de un paciente joven. Se usa super para llamar al constructor de la clase Paciente.
 	 * <br>
 	 * <b> Pre: </b> El dni debe ser positivo y entero, debe tener al menos 8 digitos, no se debe escribir con puntos ni comas, sólo números.

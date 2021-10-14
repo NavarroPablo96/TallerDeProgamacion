@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.ArrayList;
+
 import decorators.IMedico;
 /**
  * @author Imanol Vázquez,Juan Manuel Mujica,Francisco Stimmler,Sebastian Agüero   
@@ -8,9 +10,13 @@ import decorators.IMedico;
  */
 public class Medico extends Persona implements IMedico{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private long nroMatricula;
 	private static double honorarioBase;
-	//private Hashmap
+	private ArrayList<ConsultaMedica> consultas = new ArrayList<ConsultaMedica>();
 	/**
 	 * Constructor con siete parametros para setear el medico
 	 * <br>
@@ -25,7 +31,7 @@ public class Medico extends Persona implements IMedico{
 	 */
 	public Medico(String dni, String nombre, String apellido, String domicilio, String ciudad, String telefono,long nroMatricula) {
 		super(dni, nombre, apellido, domicilio, ciudad, telefono);
-		this.nroMatricula = nroMatricula;
+		this.nroMatricula = nroMatricula; 
 	}
 
 	public static void setHonorarioBase(double h) {
@@ -42,5 +48,7 @@ public class Medico extends Persona implements IMedico{
 		return honorarioBase;
 	}
 	
-	//public void agregarconsulta()
+	public void agregarConsulta(ConsultaMedica consulta) {
+		this.consultas.add(consulta);
+	}
 }

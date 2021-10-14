@@ -1,7 +1,9 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 
@@ -10,7 +12,11 @@ import java.util.HashMap;
  *<br>
  *Clase que representa una factura realizada a un paciente ya atendido.
  */
-public class Factura implements Comparable{
+public class Factura implements Comparable,Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static int siguienteNumero = 0;
 	private int nroFactura;
 	private Calendar fecha = new GregorianCalendar();
@@ -18,9 +24,13 @@ public class Factura implements Comparable{
     /**
      * @aggregation shared
      */
-    private Paciente paciente;
-	
-	private double total;private HashMap<String, Prestacion> prestaciones = new HashMap<String, Prestacion>();
+    private transient Paciente paciente;
+    private String dniPaciente;
+	private String nombrePaciente;
+	private String apellidoPaciente;
+    
+	private double total;
+	private HashMap<String, Prestacion> prestaciones = new HashMap<String, Prestacion>();
 	
 	/**
      * Constructor con dos parametros para setear el paciente al que se le adjudica la factura y su lista de prestaciones.<br>
@@ -32,10 +42,13 @@ public class Factura implements Comparable{
 	public Factura(Paciente paciente, HashMap<String, Prestacion> prestaciones) {
 		Factura.siguienteNumero++;
 		this.nroFactura = Factura.siguienteNumero;
-		this.fecha = fecha.getInstance();
+		this.fecha = Calendar.getInstance();
 		this.paciente = paciente;
 		this.prestaciones = prestaciones;
 		this.calculaTotal(prestaciones);
+		this.dniPaciente = paciente.getDni();
+		this.nombrePaciente = paciente.getNombre();
+		this.apellidoPaciente = paciente.getApellido();
 	}
 
 	public int getNroFactura() {
@@ -93,8 +106,9 @@ public class Factura implements Comparable{
      *Se imprime la factura mostrando en cada línea: tipo, valor, cantidad y subtotal de cada prestación.
      */
 	public void mostrarFactura() {
-		System.out.println("Factura: \n"
-		+ "prestacion \t valor \t\t cantidad \t subtotal\n");
+		System.out.println("Nombre: " + this.nombrePaciente 
+							+"\nApellido: "+ this.apellidoPaciente+ "\nDni: " 
+							+this.dniPaciente + "\nFactura: \n" + "prestacion \t valor \t\t cantidad \t subtotal\n");
 		for (Prestacion p : prestaciones.values()) {
 			System.out.println(p);
 		}
