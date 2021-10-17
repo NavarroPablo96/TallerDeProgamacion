@@ -208,5 +208,26 @@ public class Clinica {
 	public TreeSet<Factura> getFacturas() {
 		return facturas;
 	}
+	
+	
+	/**
+	 * Busca el medico en el hashmap con su numero de matricula y lo retorna<br>
+	 * <b>Pre: </b>Debe existir al menos un medico en el Hashmap y el paramtro nroMatricula debe ser de un medico existente
+	 *  @param nroMatricula: numero de matricula de un Medico
+	 *  @return retorna el medico al que pertenece el numero de matricula
+	 */
+	public Medico getMedico(long nroMatricula) {
+		return medicos.get(nroMatricula);
+	}
+
+	/**
+	 * Busca el paciente en el hashmap con su numero de historia clinica y lo retorna<br>
+	 * <b>Pre: </b>Debe existir al menos un paciente en el Hashmap y el paramtro nroHistoriaPaciente debe ser de un Paciente existente
+	 *  @param nroHistoriaPaciente: numero de historia clinica de un Pacietne
+	 *  @return retorna el Paciente al que pertenece el numero de historia clinica
+	 */
+	public Paciente getPaciente(long nroHistoriaPaciente) {
+		return pacientesRegistrados.get(nroHistoriaPaciente);
+	}
 
 }

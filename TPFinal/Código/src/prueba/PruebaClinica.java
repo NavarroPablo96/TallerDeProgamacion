@@ -40,7 +40,7 @@ public class PruebaClinica {
 //		ConsultaMedica.setValorConsulta(800);
 //		ConsultaMedica.setPorcentajeExtra(90);
 //		Medico.setHonorarioBase(1200);
-////		
+//		
 //		HashMap<Long, Paciente> pacientes = new HashMap<Long, Paciente>();
 //		HashMap<Long,IMedico> medicos = new HashMap<Long,IMedico>(); 
 //		
@@ -48,13 +48,13 @@ public class PruebaClinica {
 //		Paciente p2 = new Mayor("222", "Ima", "V", "445566", "balcarce", "456");
 //		IMedico Medico1 = MedicoFactory.getMedico("Pediatria","Residente","Magister", "11234532", "Pepe", "Pepe", "San Luis 1234", "Batan", "5551234", 2345);
 //		IMedico Medico2 = MedicoFactory.getMedico("Cirugia","Residente","Magister", "88234532", "Lolo", "Lolo", "San Juan 8234", "Miramar", "8881234", 8888);
-//
+		
+		
 //		Habitacion h1 = new Privada("55");
 //		Internacion internacion1 = new Internacion(7, h1);
 //		Internacion internacion2 = new Internacion(6, h1);
-//		
-//		
-//		
+		
+		
 //		ConsultaMedica pr1= new ConsultaMedica(4,Medico1);
 //		ConsultaMedica pr2= new ConsultaMedica(3,Medico2);
 //		
@@ -71,8 +71,8 @@ public class PruebaClinica {
 //		medicos.put(Medico1.getNroMatricula(), Medico1);
 //		medicos.put(Medico2.getNroMatricula(), Medico2);
 //		
-//		pacientes.put(p1.getnroHistoria(),p1);
-//		pacientes.put(p2.getnroHistoria(),p2);
+//		pacientes.put(p1.getNroHistoria(),p1);
+//		pacientes.put(p2.getNroHistoria(),p2);
 //		Clinica.getInstance().Ingreso(p1);
 //		Clinica.getInstance().Ingreso(p2);
 //		
@@ -90,28 +90,32 @@ public class PruebaClinica {
 //		} catch (NoEstaPacienteException e3) {
 //			System.out.println(e3.getMessage());
 //		}
-//		
+		
 //		PersistenciaGeneral.guardaInformacionPacientes(pacientes);
 //		PersistenciaGeneral.guardaInformacionMedicos(medicos);
+		HashMap<Long,IMedico> medicosdes = PersistenciaGeneral.recuperaInformacionMedicos(); 
 //		PersistenciaGeneral.guardaInformacionFacturas(Clinica.getInstance().getFacturas());
 		
-		HashMap<Long, Paciente> pacientesdes = PersistenciaGeneral.recuperaInformacionPacientes();
-		HashMap<Long,IMedico> medicosdes = null; 
-		TreeSet<Factura> facturasdes = null;
+//		HashMap<Long, Paciente> pacientesdes = PersistenciaGeneral.recuperaInformacionPacientes();
+//		TreeSet<Factura> facturasdes = PersistenciaGeneral.recuperaInformacionFacturas();
+//		
+//		
 		
-		for(Paciente i:pacientesdes.values()) {
-			System.out.println(i.toString());
-			for(Prestacion j:i.getPrestaciones()) {
-				System.out.println(j.toString());
-			}
+		for(IMedico i:medicosdes.values()) {
+			System.out.println(i.getDni() + i.getNombre() + i.getApellido());
 		}
+//		for(Paciente i:pacientesdes.values()) {
+//			System.out.println(i.toString());
+//			for(Prestacion j:i.getPrestaciones()) {
+//				System.out.println(j.toString());
+//			}
+//		}
+//		
+//		
 		
 		
 //		Clinica.getInstance().setPacientesRegistrados(pacientes);
 //		
-
-		
-
 		
 //		
 		

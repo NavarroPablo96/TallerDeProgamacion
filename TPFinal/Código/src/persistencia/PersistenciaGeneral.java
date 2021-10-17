@@ -69,7 +69,7 @@ public class PersistenciaGeneral {
         return medicos;
 	}
 	
-	public static void guardaInformacionMedicos(HashMap<Long, IMedico> medicos) {
+	public static void guardaInformacionMedicos(HashMap<Long,IMedico> medicos) {
 		
 		IPersistencia<Serializable>  persistencia = new Persistencia(); 
 		try

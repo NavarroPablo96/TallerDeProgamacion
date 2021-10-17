@@ -1,6 +1,10 @@
 package decorators;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
+import modelo.ConsultaMedica;
+import modelo.Medico;
 
 /**
  * @author Imanol Vázquez,Juan Manuel Mujica,Francisco Stimmler,Sebastian Agüero   
@@ -33,4 +37,31 @@ public abstract class DecoratorMedico implements IMedico,Serializable{
 		return this.encapsulado.getNombre();
 	}
 	
+	public String getDni() {
+		return this.encapsulado.getDni();
+	}
+
+	public String getApellido() {
+		return this.encapsulado.getApellido();
+	}
+
+	public String getDomicilio() {
+		return this.encapsulado.getDomicilio();
+	}
+
+	public String getCiudad() {
+		return this.encapsulado.getCiudad();
+	}
+
+	public String getTelefono() {
+		return this.encapsulado.getTelefono();
+	}
+	
+	public ArrayList<ConsultaMedica> getConsultas(){
+		return this.encapsulado.getConsultas();
+	}
+	
+	public void agregarConsulta(ConsultaMedica consulta) {
+		this.encapsulado.agregarConsulta(consulta);
+	}
 }

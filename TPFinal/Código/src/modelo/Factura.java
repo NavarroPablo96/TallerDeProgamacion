@@ -24,7 +24,7 @@ public class Factura implements Comparable,Serializable{
     /**
      * @aggregation shared
      */
-    private transient Paciente paciente;
+    private long nroHistoriaPaciente;
     private String dniPaciente;
 	private String nombrePaciente;
 	private String apellidoPaciente;
@@ -34,7 +34,7 @@ public class Factura implements Comparable,Serializable{
 	
 	/**
      * Constructor con dos parametros para setear el paciente al que se le adjudica la factura y su lista de prestaciones.<br>
-     * <b> Pre: </b> El parámetro paciente debe ser distinto de null.<br>
+     * <b> Pre: </b> El parámetro paciente debe ser distinto de null. El paciente debe existir<br>
      * <b> Post: </b> el atributo estático siguienteNumero se incrementa en 1.<br>
      * @param paciente : parámetro de tipo Paciente que representa al paciente al que se le realiza la facturación.
      * @param prestaciones : parámetro de tipo HashMap que representa un listado de las prestaciones pertenecientes al paciente.
@@ -43,7 +43,7 @@ public class Factura implements Comparable,Serializable{
 		Factura.siguienteNumero++;
 		this.nroFactura = Factura.siguienteNumero;
 		this.fecha = Calendar.getInstance();
-		this.paciente = paciente;
+		this.nroHistoriaPaciente = paciente.getNroHistoria();
 		this.prestaciones = prestaciones;
 		this.calculaTotal(prestaciones);
 		this.dniPaciente = paciente.getDni();
@@ -60,7 +60,7 @@ public class Factura implements Comparable,Serializable{
 	}
 
 	public Paciente getPaciente() {
-		return paciente;
+		return Clinica.getInstance().getPaciente(this.nroHistoriaPaciente);
 	}
 
 	public double getTotal() {

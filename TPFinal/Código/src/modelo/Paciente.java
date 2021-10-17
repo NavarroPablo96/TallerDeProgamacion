@@ -14,7 +14,7 @@ public abstract class Paciente extends Persona implements IRangoEtario{
 	 */
 	private static final long serialVersionUID = 1L;
 	private static long siguienteNumero = 0;
-	private long ultimonrohistoria;
+//	private long ultimonrohistoria;
 	private long nroHistoria;
 	private ArrayList<Prestacion> prestaciones = new ArrayList<Prestacion>();
 	
@@ -94,14 +94,14 @@ public abstract class Paciente extends Persona implements IRangoEtario{
 				+ getDomicilio() + ", getCiudad()=" + getCiudad() + "]";
 	}
 
-	public long getUltimonrohistoria() {
-		return ultimonrohistoria;
-	}
-
-	
-	public void setUltimonrohistoria(long ultimonrohistoria) {
-		this.ultimonrohistoria = Paciente.siguienteNumero;
-	}
+//	public long getUltimonrohistoria() {
+//		return ultimonrohistoria;
+//	}
+//
+//	
+//	public void setUltimonrohistoria(long ultimonrohistoria) {
+//		this.ultimonrohistoria = Paciente.siguienteNumero;
+//	}
 	
 	
 	

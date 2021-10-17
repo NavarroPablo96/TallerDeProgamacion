@@ -15,43 +15,43 @@ public class ConsultaMedica extends Prestacion {
 	/**
      * @aggregation shared
      */
-    private transient IMedico medico;
-	private double valorConsulta = 800;
-	private double porcentajeExtra = 1.2;
+    private long nroMatricula;
+	private static double valorConsulta = 800;
+	private static double porcentajeExtra = 90;
 
 	/**
      * Constructor con dos parametros para setear la cantidad de consultas y el médico que las atendió.<br>
-     * <b> Pre: </b> El parámetro cantidad debe ser entero positivo. <br>
+     * <b> Pre: </b> El parámetro cantidad debe ser entero positivo. El médico debe existir <br>
      * @param cantidad : parametro de tipo int que representa la cantidad de consultas realizadas por el medico.
      * @param medico : parametro de tipo IMedico que representa el médico que atendió la consulta.
      */
 	public ConsultaMedica(int cantidad, IMedico medico) {
 		super(cantidad);
-		this.medico = medico;
-		super.subtotal = this.valorConsulta * cantidad + this.medico.getHonorario() * this.porcentajeExtra;
-		//medico.agregarConsulta(this);
+		this.nroMatricula = medico.getNroMatricula();
+		super.subtotal = ConsultaMedica.valorConsulta * cantidad + medico.getHonorario() * ConsultaMedica.porcentajeExtra;
+		Clinica.getInstance().getMedico(this.nroMatricula).agregarConsulta(this);
 	}
 	
 	public IMedico getMedico() {
-		return medico;
+		return Clinica.getInstance().getMedico(this.nroMatricula);
 	}
 
-	public void setValorConsulta(double valor) {
-		this.valorConsulta = valor;
+	public static void setValorConsulta(double valor) {
+		ConsultaMedica.valorConsulta = valor;
 	}
 	
-	public void setPorcentajeExtra(double porcentaje) {
-		this.porcentajeExtra = 1 + porcentaje/100;
+	public static void setPorcentajeExtra(double porcentaje) {
+		ConsultaMedica.porcentajeExtra = 1 + porcentaje/100;
 	}
 	
 	@Override
 	public String toString() {
-		return this.medico.getNombre() + " \t\t " + this.valorConsulta + " \t\t " + super.getCantidad() + " \t\t " + super.subtotal + "\n";
+		return this.getMedico().getNombre() + " \t\t " + ConsultaMedica.valorConsulta + " \t\t " + super.getCantidad() + " \t\t " + super.subtotal + "\n";
 	}
 
 	@Override
 	public long getPrestacion() {
-		return this.medico.getNroMatricula();
+		return this.getMedico().getNroMatricula();
 	}
 
 }

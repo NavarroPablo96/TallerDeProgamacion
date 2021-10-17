@@ -13,7 +13,7 @@ public abstract class Habitacion implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	protected double costoAsignacion=1000;
+	protected static double costoAsignacion = 1000;
 	private String numeroHabitacion;
 	/**
 	 * Constructor con un parametro para setear la habitacion<br>
@@ -25,12 +25,12 @@ public abstract class Habitacion implements Serializable {
 		this.numeroHabitacion = numeroHabitacion;
 	}
 
-	public void setCostoAsignacion(double costo) {
-			this.costoAsignacion = costo;
+	public static void setCostoAsignacion(double costo) {
+			Habitacion.costoAsignacion = costo;
 	}
 	
-	public double getCostoasignacion() {
-		return costoAsignacion;
+	public static double getCostoasignacion() {
+		return Habitacion.costoAsignacion;
 	}
 
 	public String getNumeroHabitacion() {

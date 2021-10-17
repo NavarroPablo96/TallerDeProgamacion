@@ -14,7 +14,7 @@ import decorators.IMedico;
  *<br>
  *Clase que se encarga de la creación de médicos mediante la utilización del Patrón Factory.
  */
-public class MedicoFactory {
+public class MedicoFactory{
 	/**
      *Metodo estático que genera una instancia de IMedico y lo decora de acuerdo a los parámetros recibidos.<br>
      *<b>Pre: </b> Los parámetros de tipo String deben ser distintos de null y no deben estar vacios.
@@ -36,7 +36,6 @@ public class MedicoFactory {
 
 		IMedico encapsulado = new Medico(dni, nombre, apellido, domicilio, ciudad, telefono, nroMatricula);
 		IMedico respuesta = null;
-
 
 		if(especialidad.equals("Clinica")) {
 			respuesta = new DecoratorClinica(encapsulado);

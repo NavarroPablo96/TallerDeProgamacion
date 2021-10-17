@@ -10,7 +10,7 @@ public class Privada extends Habitacion {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private double costoPrivada = 0;
+	private static double costoPrivada = 1000;
 	/**
 	 * Constructor con un parametro para setear la habitacion privada.
 	 * <br>
@@ -21,8 +21,8 @@ public class Privada extends Habitacion {
 		super(numeroHabitacion);
 	}
 	
-	public void setCostoPrivada(double costo) {
-		this.costoPrivada = costo;
+	public static void setCostoPrivada(double costo) {
+		Privada.costoPrivada = costo;
 	}
 	
 	@Override
