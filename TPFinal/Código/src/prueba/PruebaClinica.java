@@ -39,6 +39,8 @@ public class PruebaClinica {
 //		TerapiaIntensiva.setCostoTerapiaIntensiva(1500);
 //		ConsultaMedica.setValorConsulta(800);
 //		ConsultaMedica.setPorcentajeExtra(90);
+		
+		//Pusimos 500 en vez de 1200
 //		Medico.setHonorarioBase(1200);
 //		
 //		HashMap<Long, Paciente> pacientes = new HashMap<Long, Paciente>();
@@ -61,6 +63,7 @@ public class PruebaClinica {
 //		HashMap<String, Prestacion> prestaciones1 = new HashMap<String, Prestacion>();
 //		HashMap<String, Prestacion> prestaciones2 = new HashMap<String, Prestacion>();
 //		
+		//El tipo del hashMap es diferente.
 //		prestaciones1.put(internacion1.getHabitacion().getNumeroHabitacion(), internacion1);
 //		prestaciones1.put(pr1.getMedico().getNombre(), pr1);
 //		prestaciones2.put(pr2.getMedico().getNombre(), pr2);

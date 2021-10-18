@@ -23,4 +23,8 @@ public class DecoratorPermanente extends DecoratorMedico {
 		return this.encapsulado.getHonorario() * 1.1;
 	}
 	
+	public String toString() {
+		return encapsulado.toString() + 
+				"Contratacion: Permanente";
+	}
 }

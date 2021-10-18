@@ -23,4 +23,9 @@ public class DecoratorPediatria extends DecoratorMedico {
 	public double getHonorario() {
 		return this.encapsulado.getHonorario() *1.07;
 	}
+	
+	public String toString() {
+		return encapsulado.toString() + 
+				"Especialidad: Pediatria";
+	}
 }

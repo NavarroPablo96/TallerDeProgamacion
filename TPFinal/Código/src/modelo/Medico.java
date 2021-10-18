@@ -15,7 +15,7 @@ public class Medico extends Persona implements IMedico{
 	 */
 	private static final long serialVersionUID = 1L;
 	private long nroMatricula;
-	private static double honorarioBase = 500;
+	private static double honorarioBase = 1200;
 	private ArrayList<ConsultaMedica> consultas = new ArrayList<ConsultaMedica>();
 	/**
 	 * Constructor con siete parametros para setear el medico
@@ -57,6 +57,13 @@ public class Medico extends Persona implements IMedico{
 		return consultas;
 	}
 	
+	public String toString() {
+		return "Matricula: " + this.getNroMatricula()+
+				"\nNombre y apellido: " + this.getNombre() +" "+ this.getApellido()+ 
+				"\nDni: " + this.getDni()+
+				"\nCiudad y domicilio: " + this.getCiudad() + this.getDomicilio()+
+				"\nTelefono:" + this.getTelefono() + "\n";
+	}	
 	
 	
 	

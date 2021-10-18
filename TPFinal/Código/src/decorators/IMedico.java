@@ -21,7 +21,5 @@ String getCiudad();
 String getTelefono();
 ArrayList<ConsultaMedica> getConsultas();
 void agregarConsulta(ConsultaMedica consulta);
-
-
-
+String toString();
 }

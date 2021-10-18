@@ -23,5 +23,9 @@ public class DecoratorClinica extends DecoratorMedico {
 	public double getHonorario() {
 		return this.encapsulado.getHonorario() *1.05;
 	}
-
+	
+	public String toString() {
+		return encapsulado.toString() + 
+				"Especialidad: Clinica";
+	}
 }

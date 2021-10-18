@@ -35,7 +35,7 @@ public class Internacion extends Prestacion {
 
 	@Override
 	public String toString() {
-		return this.habitacion.getNumeroHabitacion() + " \t\t " + this.habitacion.getCosto(1) + " \t " + super.getCantidad() + " \t\t " + super.subtotal + "\n";
+		return "Internacion--> Numero de habitacion: "+ this.habitacion.getNumeroHabitacion() + " \t Costo:" + this.habitacion.getCosto(1) + " \t Cantidad de dias:" + super.getCantidad() + " \t Subtotal:" + super.subtotal + "\n";
 	}
 
 	@Override

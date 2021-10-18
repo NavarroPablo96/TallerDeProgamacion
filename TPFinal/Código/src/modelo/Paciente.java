@@ -89,11 +89,25 @@ public abstract class Paciente extends Persona implements IRangoEtario{
 
 	@Override
 	public String toString() {
-		return "Paciente [nroHistoria=" + nroHistoria + ", getDni()=" + getDni()
-				+ ", getNombre()=" + getNombre() + ", getApellido()=" + getApellido() + ", getDomicilio()="
-				+ getDomicilio() + ", getCiudad()=" + getCiudad() + "]";
+		return "Paciente [nroHistoria=" + nroHistoria + ", Dni=" + getDni()
+				+ ", Nombre=" + getNombre() + ", Apellido=" + getApellido() + ", Domicilio="
+				+ getDomicilio() + ",Ciudad=" + getCiudad() + "]";
 	}
 
+	public String historicoPracticas() {
+		StringBuilder br = new StringBuilder(); 
+		
+		br.append("\nHistorico de practicas e internaciones realizadas\n");
+		for(Prestacion i: this.prestaciones) {
+			 br.append(i.toString());
+		}
+		br.append("-------------------------------------------------------");
+		return br.toString();
+	}
+	
+	public static void setsiguientenumero(long numero) {
+		Paciente.siguienteNumero = numero;
+	}
 //	public long getUltimonrohistoria() {
 //		return ultimonrohistoria;
 //	}

@@ -23,4 +23,8 @@ public class DecoratorDoctorado extends DecoratorMedico {
 		return this.encapsulado.getHonorario() * 1.1;
 	}
 	
+	public String toString() {
+		return encapsulado.toString() + 
+				"Posgrado: Doctorado";
+	}
 }

@@ -64,4 +64,5 @@ public abstract class DecoratorMedico implements IMedico,Serializable{
 	public void agregarConsulta(ConsultaMedica consulta) {
 		this.encapsulado.agregarConsulta(consulta);
 	}
+	
 }

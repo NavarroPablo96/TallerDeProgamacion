@@ -23,4 +23,8 @@ public class DecoratorMagister extends DecoratorMedico {
 		return this.encapsulado.getHonorario() * 1.05;
 	}
 	
+	public String toString() {
+		return encapsulado.toString() + 
+				"Posgrado: Magister";
+	}
 }
