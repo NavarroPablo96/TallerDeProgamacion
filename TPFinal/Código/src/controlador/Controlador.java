@@ -13,6 +13,7 @@ public class Controlador implements ActionListener {
 	
 	public Controlador() {
 		this.vista = new Ventana_Persistencia();
+		
 		this.vista.setActionListener(this);
 	}
 

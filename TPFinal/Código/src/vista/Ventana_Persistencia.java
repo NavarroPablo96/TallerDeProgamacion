@@ -20,6 +20,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
 import java.awt.event.ItemEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class Ventana_Persistencia extends JFrame implements IVistaPersistencia{
 
@@ -96,16 +99,30 @@ public class Ventana_Persistencia extends JFrame implements IVistaPersistencia{
 		panel_General.add(panel_Inferior);
 		
 		this.boton_Recuperar = new JButton("Recuperar");
+		boton_Recuperar.setEnabled(false);
 		boton_Recuperar.setMargin(new Insets(5, 17, 5, 17));
 		panel_Inferior.add(boton_Recuperar);
 		boton_Recuperar.setActionCommand("Recuperar");
 		
 		//Cositas que estoy agregando. Funciona para el primero. Chequea si existe la lista o no para el primero del comboBox
 		archivo = new File(((String) (comboBox_Persistencias.getSelectedItem())).concat(".dat"));
-		if(!archivo.exists()) {
-			boton_Recuperar.setEnabled(false);
-		}	
+		if(archivo.exists())
+			boton_Recuperar.setEnabled(true);
 		
+		comboBox_Persistencias.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				habilitaBotonRecuperar();
+			}
+		});
+	}
+	
+	
+	public void habilitaBotonRecuperar(){
+		archivo = new File(((String) (comboBox_Persistencias.getSelectedItem())).concat(".dat"));
+		if(archivo.exists())
+			boton_Recuperar.setEnabled(true);
+		else 
+			boton_Recuperar.setEnabled(false);	
 	}
 	
 	
@@ -117,10 +134,14 @@ public class Ventana_Persistencia extends JFrame implements IVistaPersistencia{
 		this.boton_Recuperar.addActionListener(actionListener);
 		this.comboBox_Persistencias.addActionListener(actionListener);
 	}
+	
+//	public void setMuseListener
 
 	@Override
 	public String getMesajePersistencia() {
 		return (String)comboBox_Persistencias.getSelectedItem();
 	}
+	
+	
 
 }
