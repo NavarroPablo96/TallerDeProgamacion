@@ -24,7 +24,11 @@ import excepciones.OrdenFechasIncorrectoException;
  */
 
 public class Clinica {
-    /**
+    public HashMap<Long, Medico> getMedicos() {
+		return medicos;
+	}
+
+	/**
      * @aggregation composite
      */
     private static Clinica instance = null;
@@ -229,5 +233,10 @@ public class Clinica {
 	public Paciente getPaciente(long nroHistoriaPaciente) {
 		return pacientesRegistrados.get(nroHistoriaPaciente);
 	}
+
+	public HashMap<Long, Paciente> getPacientesRegistrados() {
+		return pacientesRegistrados;
+	}
+
 
 }
