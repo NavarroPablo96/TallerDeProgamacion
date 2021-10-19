@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -30,28 +31,8 @@ public class Ventana_Persistencia extends JFrame implements IVistaPersistencia{
 	private JButton boton_Guardar;
 	private JButton boton_Recuperar;
 	private JComboBox<String> comboBox_Persistencias;
-	private ActionListener actionListener;
 	private File archivo = null;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Ventana_Persistencia frame = new Ventana_Persistencia();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public Ventana_Persistencia() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -105,15 +86,31 @@ public class Ventana_Persistencia extends JFrame implements IVistaPersistencia{
 		boton_Recuperar.setActionCommand("Recuperar");
 		
 		//Cositas que estoy agregando. Funciona para el primero. Chequea si existe la lista o no para el primero del comboBox
-		archivo = new File(((String) (comboBox_Persistencias.getSelectedItem())).concat(".dat"));
-		if(archivo.exists())
-			boton_Recuperar.setEnabled(true);
+//		archivo = new File(((String) (comboBox_Persistencias.getSelectedItem())).concat(".dat"));
+//		if(archivo.exists())
+//			boton_Recuperar.setEnabled(true);
+		habilitaBotonRecuperar();
 		
 		comboBox_Persistencias.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				habilitaBotonRecuperar();
 			}
 		});
+		
+		boton_Guardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(boton_Guardar, "Se guardó el archivo");
+			}
+		});
+		
+		boton_Recuperar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(boton_Guardar, "Se recuperó el archivo");
+			}
+		});
+		
+		setVisible(true);
+		
 	}
 	
 	
@@ -129,13 +126,13 @@ public class Ventana_Persistencia extends JFrame implements IVistaPersistencia{
 	@Override
 	public void setActionListener(ActionListener actionListener) {
 		// TODO Auto-generated method stub
-		this.actionListener = actionListener;
+//		this.actionListener = actionListener;
 		this.boton_Guardar.addActionListener(actionListener);
 		this.boton_Recuperar.addActionListener(actionListener);
 		this.comboBox_Persistencias.addActionListener(actionListener);
 	}
 	
-//	public void setMuseListener
+
 
 	@Override
 	public String getMesajePersistencia() {

@@ -108,11 +108,20 @@ public class Factura implements Comparable,Serializable{
 	public void mostrarFactura() {
 		System.out.println("Nombre: " + this.nombrePaciente 
 							+"\nApellido: "+ this.apellidoPaciente+ "\nDni: " 
-							+this.dniPaciente + "\nFactura: \n" + "prestacion \t valor \t\t cantidad \t subtotal\n");
+							+this.dniPaciente);
 		for (Prestacion p : prestaciones.values()) {
 			System.out.println(p);
 		}
 		System.out.println("\t\t\t\t\t TOTAL:  " + this.total);
 	}
+
+	public static void setSiguienteNumero(int siguienteNumero) {
+		Factura.siguienteNumero = siguienteNumero;
+	}
+
+	public static int getSiguienteNumero() {
+		return siguienteNumero;
+	}
+	
 	
 }

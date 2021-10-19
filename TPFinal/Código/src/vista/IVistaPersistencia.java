@@ -8,5 +8,5 @@ public interface IVistaPersistencia {
 	
 	void setActionListener(ActionListener actionListener);
 	String getMesajePersistencia();
-	
+	void habilitaBotonRecuperar();
 }

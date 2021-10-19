@@ -105,7 +105,7 @@ public abstract class Paciente extends Persona implements IRangoEtario{
 		return br.toString();
 	}
 	
-	public static void setsiguientenumero(long numero) {
+	public static void setSiguienteNumero(long numero) {
 		Paciente.siguienteNumero = numero;
 	}
 //	public long getUltimonrohistoria() {
@@ -116,6 +116,10 @@ public abstract class Paciente extends Persona implements IRangoEtario{
 //	public void setUltimonrohistoria(long ultimonrohistoria) {
 //		this.ultimonrohistoria = Paciente.siguienteNumero;
 //	}
+
+	public static long getSiguienteNumero() {
+		return siguienteNumero;
+	}
 	
 	
 	

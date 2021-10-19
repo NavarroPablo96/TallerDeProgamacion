@@ -24,7 +24,7 @@ import excepciones.OrdenFechasIncorrectoException;
  */
 
 public class Clinica {
-    public HashMap<Long, Medico> getMedicos() {
+    public HashMap<Long, IMedico> getMedicos() {
 		return medicos;
 	}
 
@@ -50,7 +50,7 @@ public class Clinica {
 	private HashMap<Long,Paciente> listaAtencion = new HashMap<Long,Paciente>();
 	private HashMap<Long,Habitacion> habitaciones = new HashMap<Long,Habitacion>();
 	private HashMap<Long,Paciente> pacientesRegistrados = new HashMap<Long,Paciente>();
-	private HashMap<Long,Medico> medicos = new HashMap<Long,Medico>();
+	private HashMap<Long,IMedico> medicos = new HashMap<Long,IMedico>();
 
     /**
      * @aggregation composite
@@ -221,7 +221,7 @@ public class Clinica {
 	 *  @return retorna el medico al que pertenece el numero de matricula
 	 */
 	public Medico getMedico(long nroMatricula) {
-		return medicos.get(nroMatricula);
+		return (Medico) medicos.get(nroMatricula);
 	}
 
 	/**
@@ -238,5 +238,13 @@ public class Clinica {
 		return pacientesRegistrados;
 	}
 
+	public void setMedicos(HashMap<Long, IMedico> medicos) {
+		this.medicos = medicos;
+	}
 
+	public void setFacturas(TreeSet<Factura> facturas) {
+		this.facturas = facturas;
+	}
+
+	
 }

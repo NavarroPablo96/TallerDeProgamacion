@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.TreeSet;
 
+import controlador.Controlador;
 import decorators.IMedico;
 import modelo.Clinica;
 import modelo.ConsultaMedica;
@@ -32,6 +33,8 @@ import modelo.TerapiaIntensiva;
 public class PruebaClinica {
 
 	public static void main(String[] args) {
+		
+		Controlador controlador = new Controlador();
 		
 //		Habitacion.setCostoAsignacion(1000);
 //		Compartida.setCostoCompartida(500);
@@ -96,7 +99,7 @@ public class PruebaClinica {
 		
 //		PersistenciaGeneral.guardaInformacionPacientes(pacientes);
 //		PersistenciaGeneral.guardaInformacionMedicos(medicos);
-		HashMap<Long,IMedico> medicosdes = PersistenciaGeneral.recuperaInformacionMedicos(); 
+//		HashMap<Long,IMedico> medicosdes = PersistenciaGeneral.recuperaInformacionMedicos(); 
 //		PersistenciaGeneral.guardaInformacionFacturas(Clinica.getInstance().getFacturas());
 		
 //		HashMap<Long, Paciente> pacientesdes = PersistenciaGeneral.recuperaInformacionPacientes();
@@ -104,9 +107,9 @@ public class PruebaClinica {
 //		
 //		
 		
-		for(IMedico i:medicosdes.values()) {
-			System.out.println(i.getDni() + i.getNombre() + i.getApellido());
-		}
+//		for(IMedico i:medicosdes.values()) {
+//			System.out.println(i.getDni() + i.getNombre() + i.getApellido());
+//		}
 //		for(Paciente i:pacientesdes.values()) {
 //			System.out.println(i.toString());
 //			for(Prestacion j:i.getPrestaciones()) {
