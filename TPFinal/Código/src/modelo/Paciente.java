@@ -14,7 +14,6 @@ public abstract class Paciente extends Persona implements IRangoEtario{
 	 */
 	private static final long serialVersionUID = 1L;
 	private static long siguienteNumero = 0;
-//	private long ultimonrohistoria;
 	private long nroHistoria;
 	private ArrayList<Prestacion> prestaciones = new ArrayList<Prestacion>();
 	
@@ -93,7 +92,9 @@ public abstract class Paciente extends Persona implements IRangoEtario{
 				+ ", Nombre=" + getNombre() + ", Apellido=" + getApellido() + ", Domicilio="
 				+ getDomicilio() + ",Ciudad=" + getCiudad() + "]";
 	}
-
+	/*
+	 * Método que hace un reporte de todas las consultas médicas e internaciones de un paciente.
+	 * */
 	public String historicoPracticas() {
 		StringBuilder br = new StringBuilder(); 
 		
@@ -108,15 +109,7 @@ public abstract class Paciente extends Persona implements IRangoEtario{
 	public static void setSiguienteNumero(long numero) {
 		Paciente.siguienteNumero = numero;
 	}
-//	public long getUltimonrohistoria() {
-//		return ultimonrohistoria;
-//	}
-//
-//	
-//	public void setUltimonrohistoria(long ultimonrohistoria) {
-//		this.ultimonrohistoria = Paciente.siguienteNumero;
-//	}
-
+	
 	public static long getSiguienteNumero() {
 		return siguienteNumero;
 	}

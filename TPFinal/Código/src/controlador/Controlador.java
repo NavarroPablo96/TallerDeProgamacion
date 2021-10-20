@@ -2,26 +2,32 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-
-import decorators.IMedico;
 import modelo.Clinica;
-import modelo.ConsultaMedica;
 import modelo.Paciente;
 import modelo.Factura;
 import persistencia.PersistenciaGeneral;
 import vista.IVistaPersistencia;
 import vista.Ventana_Persistencia;
 
+/**
+ * @author Ivo Vucetic,Juan Manuel Mujica,Pablo Navarro,Sebastián Agüero.<br>
+ *Controlador para la ventana de persistencia. Implementa ActionListener.
+ */
 public class Controlador implements ActionListener {
 	
 	private IVistaPersistencia vista= null;
-	
+	/**
+	 * Constructor sin parámetros, al momento de crear el controlador se crea la ventana.<br>
+	 */
 	public Controlador() {
 		this.vista = new Ventana_Persistencia();
 		this.vista.setActionListener(this);
 	}
 
+	/**
+	 * Método actionPerformed que se encarga de escuchar los eventos en la vista, y actua segun el evento recibido <br>
+	 * @param e: Parámetro de tipo ActionEvent que representa el evento recibido.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("Guardar")) {
@@ -33,7 +39,8 @@ public class Controlador implements ActionListener {
 				PersistenciaGeneral.guardaInformacionFacturas(Clinica.getInstance().getFacturas());
 			}
 			this.vista.habilitaBotonRecuperar();
-		}	else if(e.getActionCommand().equals("Recuperar")){
+		}
+		else if(e.getActionCommand().equals("Recuperar")){
 				if(this.vista.getMesajePersistencia().equals("Pacientes")) {
 					Clinica.getInstance().setPacientesRegistrados(PersistenciaGeneral.recuperaInformacionPacientes());
 					Paciente.setSiguienteNumero(Clinica.getInstance().getPacientesRegistrados().size());
@@ -62,7 +69,7 @@ public class Controlador implements ActionListener {
 //					System.out.println(Factura.getSiguienteNumero());
 			//
 				}
-			}
+		}
 	}
 	
 }

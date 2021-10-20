@@ -1,11 +1,11 @@
 package persistencia;
 
 import java.io.IOException;
-import java.util.Set;
 
-import modelo.Factura;
-
-
+/**
+ * @author Ivo Vucetic,Juan Manuel Mujica,Pablo Navarro,Sebastián Agüero.<br>
+ *Interfaz que representa los metodos para lograr la persistencia.
+ */
 public interface IPersistencia <E>{
 	
 	void abrirInput (String nombre) throws IOException;
