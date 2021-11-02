@@ -43,11 +43,24 @@ public class Factura implements Comparable,Serializable{
 		this.fecha = Calendar.getInstance();
 		this.nroHistoriaPaciente = paciente.getNroHistoria();
 		this.prestaciones = prestaciones;
-		this.calculaTotal(prestaciones);
+		this.calculaTotal();
 		this.dniPaciente = paciente.getDni();
 		this.nombrePaciente = paciente.getNombre();
 		this.apellidoPaciente = paciente.getApellido();
 	}
+	
+	public Factura(Paciente paciente) {
+		Factura.siguienteNumero++;
+		this.nroFactura = Factura.siguienteNumero;
+		this.fecha = fecha.getInstance();
+		this.nroHistoriaPaciente = paciente.getNroHistoria();
+		this.dniPaciente = paciente.getDni();
+		this.nombrePaciente = paciente.getNombre();
+		this.apellidoPaciente = paciente.getApellido();
+		this.total=0;
+		
+	}
+
 
 	public int getNroFactura() {
 		return nroFactura;
@@ -72,9 +85,8 @@ public class Factura implements Comparable,Serializable{
 	/**
      *Se calcula el total a abonar por las prestaciones tomadas.<br>
      *<b>Post: </b> Se guarda en la variable total la suma de los subtotales de cada prestación. <br>
-     *@param prestaciones : parámetro de tipo HashMap que representa un listado de las prestaciones efectuadas por el paciente.
      */
-	private void calculaTotal(HashMap<String, Prestacion> prestaciones) {
+	public void calculaTotal() {
 		this.total = 0;
 		for (Prestacion p : prestaciones.values()) {
 			this.total += p.getSubtotal();
@@ -102,15 +114,18 @@ public class Factura implements Comparable,Serializable{
 	
 	/**
      *Se imprime la factura mostrando en cada línea: tipo, valor, cantidad y subtotal de cada prestación.
+	 * @return 
      */
-	public void mostrarFactura() {
-		System.out.println("Nombre: " + this.nombrePaciente 
+	public String mostrarFactura() {
+		String respuesta = "";
+		respuesta+= ("Nombre: " + this.nombrePaciente 
 							+"\nApellido: "+ this.apellidoPaciente+ "\nDni: " 
 							+this.dniPaciente);
 		for (Prestacion p : prestaciones.values()) {
-			System.out.println(p);
+			respuesta+="\n" + p;
 		}
-		System.out.println("\t\t\t\t\t TOTAL:  " + this.total);
+		respuesta+=("\n\t\t\t\t\t TOTAL:  " + this.total + "\n");
+		return respuesta;
 	}
 
 	public static void setSiguienteNumero(int siguienteNumero) {
@@ -119,6 +134,20 @@ public class Factura implements Comparable,Serializable{
 
 	public static int getSiguienteNumero() {
 		return siguienteNumero;
+	}
+	
+	/**
+	 * Método para agregar una nueva prestación a la factura.
+	 * <b> Pre: </b> El parámetro prestacion debe ser distinto de null.
+	 * El parámetro key no debe ser un String vacío<br>
+     * <b> Post: </b> el atributo estático siguienteNumero se incrementa en 1.<br>
+	 * <br>
+	 * @param key: parametro de tipo String que representa el número de habitación o el nombre del médico.
+	 * @param prestacion: parametro de tipo Prestacion que representa la prestación que se agregará.
+	 * */
+	public void addPrestacion(String key,Prestacion prestacion) {
+		
+		this.prestaciones.put(key, prestacion);
 	}
 	
 	

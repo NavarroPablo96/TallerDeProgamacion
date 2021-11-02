@@ -3,6 +3,7 @@ package modelo;
 import java.util.ArrayList;
 
 import decorators.IMedico;
+import excepciones.MedicoYaExisteException;
 /**
  * @author Imanol Vázquez,Juan Manuel Mujica,Francisco Stimmler,Sebastian Agüero   
  *<br>
@@ -32,7 +33,6 @@ public class Medico extends Persona implements IMedico{
 	public Medico(String dni, String nombre, String apellido, String domicilio, String ciudad, String telefono,long nroMatricula) {
 		super(dni, nombre, apellido, domicilio, ciudad, telefono);
 		this.nroMatricula = nroMatricula;
-		Clinica.getInstance().addMedico(this);
 	}
 	
 	@Override
@@ -63,6 +63,28 @@ public class Medico extends Persona implements IMedico{
 				"\nDni: " + this.getDni()+
 				"\nCiudad y domicilio: " + this.getCiudad() + this.getDomicilio()+
 				"\nTelefono:" + this.getTelefono() + "\n";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (nroMatricula ^ (nroMatricula >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Medico other = (Medico) obj;
+		if (nroMatricula != other.nroMatricula)
+			return false;
+		return true;
 	}	
 	
 	

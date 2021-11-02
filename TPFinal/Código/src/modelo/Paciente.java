@@ -86,12 +86,12 @@ public abstract class Paciente extends Persona implements IRangoEtario{
 		}
 	}
 
-	@Override
-	public String toString() {
-		return "Paciente [nroHistoria=" + nroHistoria + ", Dni=" + getDni()
-				+ ", Nombre=" + getNombre() + ", Apellido=" + getApellido() + ", Domicilio="
-				+ getDomicilio() + ",Ciudad=" + getCiudad() + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Paciente [nroHistoria=" + nroHistoria + ", Dni=" + getDni()
+//				+ ", Nombre=" + getNombre() + ", Apellido=" + getApellido() + ", Domicilio="
+//				+ getDomicilio() + ",Ciudad=" + getCiudad() + "]";
+//	}
 	/*
 	 * Método que hace un reporte de todas las consultas médicas e internaciones de un paciente.
 	 * */
@@ -114,7 +114,11 @@ public abstract class Paciente extends Persona implements IRangoEtario{
 		return siguienteNumero;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "N°" + nroHistoria + " " + getNombre() + " "
+				+ getApellido();
+	}
 	
 	
 }

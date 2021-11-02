@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 import java.util.Queue;
 import java.util.Set;
 import java.util.TreeSet;
@@ -13,6 +14,8 @@ import java.util.TreeSet;
 import java.util.Iterator;
 
 import decorators.IMedico;
+import excepciones.PacienteYaExisteException;
+import excepciones.MedicoYaExisteException;
 import excepciones.NoEstaPacienteException;
 import excepciones.NoHayConsultaException;
 import excepciones.OrdenFechasIncorrectoException;
@@ -48,8 +51,8 @@ public class Clinica {
      */
     private Queue<Paciente> listaEspera = new LinkedList();
 	private HashMap<Long,Paciente> listaAtencion = new HashMap<Long,Paciente>();
-	private HashMap<Long,Habitacion> habitaciones = new HashMap<Long,Habitacion>();
-	private HashMap<Long,Paciente> pacientesRegistrados = new HashMap<Long,Paciente>();
+	private HashMap<String,Habitacion> habitaciones = new HashMap<String,Habitacion>();
+	private HashMap<String,Paciente> pacientesRegistrados = new HashMap<String,Paciente>();
 	private HashMap<Long,IMedico> medicos = new HashMap<Long,IMedico>();
 
     /**
@@ -96,8 +99,18 @@ public class Clinica {
 	 * @param medico: Parámetro que será agregado al HashMap de médicos.
 	 */
 	
-	public void addMedico(Medico medico) {
-		this.medicos.put(medico.getNroMatricula(), medico);
+	public void addMedico(IMedico medico) throws MedicoYaExisteException{
+		Iterator it = this.medicos.values().iterator();
+    	boolean esta=false;
+    	while(it.hasNext() && !esta) {
+    		esta=medico.equals(it.next());
+    	}
+    	if(!esta) {
+    		this.medicos.put(medico.getNroMatricula(), medico);
+    	}else {
+    		throw new MedicoYaExisteException(medico.getNroMatricula());
+    	}
+		
 	}
 	
 	/**
@@ -111,7 +124,7 @@ public class Clinica {
 	
 	public void Ingreso(Paciente paciente) {
 		if (!pacientesRegistrados.containsKey(paciente.getNroHistoria()))
-			pacientesRegistrados.put(paciente.getNroHistoria(), paciente);
+			pacientesRegistrados.put(paciente.getDni(), paciente);
 		listaEspera.add(paciente);
 		if (this.salaPrivada == null || paciente.prioridad(salaPrivada))
 			salaPrivada = paciente;
@@ -202,9 +215,9 @@ public class Clinica {
 			throw new OrdenFechasIncorrectoException("El orden de las fechas ingresadas es incorrecto.");
 	}
 
-	public void setPacientesRegistrados(HashMap<Long, Paciente> pac) {
+	public void setPacientesRegistrados(HashMap<String, Paciente> pac) {
 		// TODO Auto-generated method stub
-		for(HashMap.Entry<Long,Paciente> i:pac.entrySet()) {
+		for(HashMap.Entry<String,Paciente> i:pac.entrySet()) {
 			this.pacientesRegistrados.put(i.getKey(),i.getValue());
 		}
 	}
@@ -234,7 +247,7 @@ public class Clinica {
 		return pacientesRegistrados.get(nroHistoriaPaciente);
 	}
 
-	public HashMap<Long, Paciente> getPacientesRegistrados() {
+	public HashMap<String, Paciente> getPacientesRegistrados() {
 		return pacientesRegistrados;
 	}
 
@@ -246,5 +259,79 @@ public class Clinica {
 		this.facturas = facturas;
 	}
 
+	public HashMap<String, Habitacion> getHabitaciones() {
+		return habitaciones;
+	}
 	
+	/**
+	 * Agrega una Factura al Treeset de facturas.<br>
+	 * <b>Pre: </b> Parámetro tipo Factura distinto de null.<br>
+	 * <b>Post: </b> Se agrega una factura al Treeset de facturas.<br>
+	 * @param factura: Parámetro de tipo Factura que representa factura a agregar.
+	 */
+	public void addFactura(Factura factura) {
+		this.facturas.add(factura);
+	}
+	
+	/**
+	 * Borra todas las facturas guardadas.<br>
+	 */	
+	public void borrarFacturas() {
+		this.facturas.clear();
+	}
+		
+	/**
+	 * Borra la última de las facturas, si tiene.<br>
+	 */	
+	public void borrarUltimaFactura() {
+		this.facturas.pollLast();
+	}
+	
+	/**
+	 * Devuelve última factura si es que no está vacío el treeset de facturas, en caso contrario, lanza excepción.<br>
+	 */	
+	public Factura getUltimaFactura() {
+		try {
+		return this.facturas.last();
+		}catch(NoSuchElementException e) {
+			return null;
+		}
+	}
+	
+	/**
+	 * Agrega un Paciente al Hashmap de pacientes, con su dni como clave.
+	 * Si no hay un paciente agregado con el mismo dni, lo agrega.
+	 * En caso contrario, lanza una excepción.<br>
+	 * <b>Pre: </b> El parametro paciente debe ser distinto de null.<br>
+	 * <b>Post: </b> Si se puede, se agrega un paciente mas al HashMap de pacientes.<br>
+	 * @param paciente: Parámetro que será agregado al HashMap de pacientes.
+	 */	
+    public void addPaciente(Paciente paciente) throws PacienteYaExisteException {
+    	Iterator it = this.pacientesRegistrados.values().iterator();
+    	boolean esta=false;
+    	while(it.hasNext() && !esta) {
+    		esta=paciente.equals(it.next());
+    	}
+    	if(!esta) {
+    		this.pacientesRegistrados.put(paciente.getDni(), paciente);
+    	}else {
+    		throw new PacienteYaExisteException(paciente.getDni());
+    	}
+    }  
+    
+    /**
+   	 * Borra un paciente pasado por parámetro.<br>
+   	 * <b>Pre: </b> Parámetro distinto de null.<br>
+   	 * <b>Post: </b> Se borra un paciente del Hashmap de pacientes.<br>
+   	 * @param paciente: Parámetro que indica el paciente que será borrado del HashMap de asociados.
+   	 */	
+    public void removePaciente(Paciente paciente) {
+       	if(this.pacientesRegistrados.containsKey(paciente.getDni()))
+       		this.pacientesRegistrados.remove(paciente.getDni());
+    }
+    
+    public void removeMedico(IMedico medico) {
+       	if(this.medicos.containsKey(medico.getNroMatricula()))
+       		this.medicos.remove(medico.getNroMatricula());
+    }
 }
