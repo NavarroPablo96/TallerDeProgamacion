@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
 
 import modelo.Clinica;
 import modelo.ConsultaMedica;
@@ -11,6 +12,7 @@ import modelo.Factura;
 import modelo.Internacion;
 import persistencia.IPersistencia;
 import persistencia.Persistencia;
+import persistencia.PersistenciaGeneral;
 import vista.IVista;
 import vista.IVistaFacturacion;
 import vista.Ventana_Facturacion;
@@ -49,11 +51,11 @@ public class Controlador_Facturacion implements ActionListener,WindowListener{
 				factura = Clinica.getInstance().getUltimaFactura();
 			}
 			factura.addPrestacion(internacion.getHabitacion().getNumeroHabitacion(), internacion);
-
+			this.vista.getPaciente().agregarPrestacion(internacion);
 
 		}else if(e.getActionCommand().equals("Agregar consultas")) {
 			
-			ConsultaMedica consultamedica= new ConsultaMedica(this.vista.getCantConsultas(),this.vista.getMedico());
+			ConsultaMedica consultaMedica= new ConsultaMedica(this.vista.getCantConsultas(),this.vista.getMedico());
 			if(isnuevafactura) { 
 				factura = new Factura(this.vista.getPaciente());
 				Clinica.getInstance().addFactura(factura);
@@ -62,7 +64,9 @@ public class Controlador_Facturacion implements ActionListener,WindowListener{
 			}else {
 				factura = Clinica.getInstance().getUltimaFactura();
 			}
-			factura.addPrestacion(consultamedica.getMedico().getNombre(), consultamedica);
+			factura.addPrestacion(consultaMedica.getMedico().getNombre(), consultaMedica);
+			this.vista.getPaciente().agregarPrestacion(consultaMedica);
+			this.vista.getMedico().agregarConsulta(consultaMedica);
 		}else if(e.getActionCommand().equals("Facturar")) {
 			factura = Clinica.getInstance().getUltimaFactura();
 			factura.calculaTotal();
@@ -79,6 +83,11 @@ public class Controlador_Facturacion implements ActionListener,WindowListener{
 
 	@Override
 	public void windowOpened(WindowEvent e) {
+//		File archivo = new File("Facturas.dat");
+//		if(archivo.exists()) {
+//			Clinica.getInstance().setFacturas(PersistenciaGeneral.recuperaInformacionFacturas());
+//			Factura.setSiguienteNumero(Clinica.getInstance().getFacturas().size());
+//		}
 	}
 
 	@Override
@@ -86,6 +95,8 @@ public class Controlador_Facturacion implements ActionListener,WindowListener{
 		if(Clinica.getInstance().getUltimaFactura()!=null && Clinica.getInstance().getUltimaFactura().getTotal()==0) {
 			Clinica.getInstance().borrarUltimaFactura();
 		}
+		PersistenciaGeneral.guardaInformacionFacturas(Clinica.getInstance().getFacturas());
+		PersistenciaGeneral.guardaInformacionPacientes(Clinica.getInstance().getPacientesRegistrados());
 		Controlador_Menu controlador_menu = new Controlador_Menu();
 	}
 

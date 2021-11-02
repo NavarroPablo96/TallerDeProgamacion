@@ -4,10 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
 
 import modelo.Clinica;
+import modelo.Factura;
+import modelo.Paciente;
 import persistencia.IPersistencia;
 import persistencia.Persistencia;
+import persistencia.PersistenciaGeneral;
 import vista.IVistaMenu;
 import vista.Ventana_Menu;
 /**
@@ -17,6 +21,7 @@ import vista.Ventana_Menu;
  */
 public class Controlador_Menu implements ActionListener,WindowListener{
 	private IVistaMenu vista = null;
+	private boolean isRecuperado = false;
 	/**
      * Constructor sin parametros, al momento de crear el controlador crea la ventana<br>
      *
@@ -45,14 +50,31 @@ public class Controlador_Menu implements ActionListener,WindowListener{
 
 	@Override
 	public void windowOpened(WindowEvent e) {
-		// TODO Auto-generated method stub
+		File archivoFacturas = new File("Facturas.dat");
+		File archivoPacientes = new File("Pacientes.dat");
+		File archivoMedicos = new File("Medicos.dat");
 		
+		if(!this.isRecuperado) {
+			if(archivoPacientes.exists()) {
+				Clinica.getInstance().setPacientesRegistrados(PersistenciaGeneral.recuperaInformacionPacientes());
+				Paciente.setSiguienteNumero(Clinica.getInstance().getPacientesRegistrados().size());				
+			}
+			if(archivoMedicos.exists())
+				Clinica.getInstance().setMedicos(PersistenciaGeneral.recuperaInformacionMedicos());
+			if(archivoFacturas.exists()) {
+				Clinica.getInstance().setFacturas(PersistenciaGeneral.recuperaInformacionFacturas());
+				Factura.setSiguienteNumero(Clinica.getInstance().getFacturas().size());				
+			}
+			this.isRecuperado=true;
+		}
 	}
 
 
 	@Override
 	public void windowClosing(WindowEvent e) {
-			
+//		PersistenciaGeneral.guardaInformacionPacientes(Clinica.getInstance().getPacientesRegistrados());
+//		PersistenciaGeneral.guardaInformacionMedicos(Clinica.getInstance().getMedicos());
+//		PersistenciaGeneral.guardaInformacionFacturas(Clinica.getInstance().getFacturas());
 	}
 
 

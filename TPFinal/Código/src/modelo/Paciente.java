@@ -67,6 +67,10 @@ public abstract class Paciente extends Persona implements IRangoEtario{
 	public long getNroHistoria() {
 		return nroHistoria;
 	}
+	
+	public void agregarPrestacion(Prestacion prestacion) {
+		this.prestaciones.add(prestacion);
+	}
 
 	/**
 	 * Se sobreescribe el metodo equals. Compara un paciente con otro a traves de su dni, si ambos tienen el mismo numero de dni
@@ -80,11 +84,11 @@ public abstract class Paciente extends Persona implements IRangoEtario{
 		return super.getDni().equals(otro.getDni());
 	}
 	
-	public void agregarPrestaciones(HashMap<String, Prestacion> prestaciones) {
-		for(Prestacion i:prestaciones.values()) {
-			this.prestaciones.add(i);
-		}
-	}
+//	public void agregarPrestaciones(HashMap<String, Prestacion> prestaciones) {
+//		for(Prestacion i:prestaciones.values()) {
+//			this.prestaciones.add(i);
+//		}
+//	}
 
 //	@Override
 //	public String toString() {
@@ -118,6 +122,10 @@ public abstract class Paciente extends Persona implements IRangoEtario{
 	public String toString() {
 		return "N°" + nroHistoria + " " + getNombre() + " "
 				+ getApellido();
+	}
+	
+	public static void decrementaSiguienteNum() {
+		Paciente.siguienteNumero--;
 	}
 	
 	

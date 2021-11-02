@@ -43,4 +43,7 @@ public class Compartida extends Habitacion {
 		return Habitacion.costoAsignacion + Compartida.costoCompartida * dias;
 	}
 
+	public String toString() {
+		return super.toString() + " Compartida";
+	}
 }

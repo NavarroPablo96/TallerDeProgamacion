@@ -64,8 +64,8 @@ public class Main
 	medicos.put(Medico2.getNroMatricula(), Medico2);
 
 	//Se agregan las prestaciones a los pacientes
-	paciente1.agregarPrestaciones(prestaciones1);
-	paciente2.agregarPrestaciones(prestaciones2);
+//	paciente1.agregarPrestaciones(prestaciones1);
+//	paciente2.agregarPrestaciones(prestaciones2);
 	
 	pacientes.put(paciente1.getNroHistoria(),paciente1);
 	pacientes.put(paciente2.getNroHistoria(),paciente2);

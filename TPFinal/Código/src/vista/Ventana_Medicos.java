@@ -262,6 +262,7 @@ public class Ventana_Medicos extends JFrame implements  KeyListener , IVistaMedi
 	public void actulizarLista() {
 		
 		this.listModel.clear();
+
 		for(IMedico i: Clinica.getInstance().getMedicos().values()) {
 			this.listModel.addElement(i);
 		}

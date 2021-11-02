@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
 
 import excepciones.PacienteYaExisteException;
 import modelo.Clinica;
@@ -11,6 +12,7 @@ import modelo.Joven;
 import modelo.Mayor;
 import modelo.Niño;
 import modelo.Paciente;
+import persistencia.PersistenciaGeneral;
 import vista.IVista;
 import vista.IVistaPaciente;
 import vista.Ventana_Paciente;
@@ -44,23 +46,32 @@ public class Controlador_Pacientes implements ActionListener, WindowListener{
 					Clinica.getInstance().addPaciente(new Mayor(this.vista.getDni(),this.vista.getNombre(),this.vista.getApellido(),this.vista.getDomicilio(),this.vista.getCiudad(),this.vista.getTelefono()));
 				}
 			} catch (PacienteYaExisteException e1) {
-			
+				
+				Paciente.decrementaSiguienteNum();
 				this.vista.error(e1.getMessage());
 			}
+			this.vista.actulizarLista();
 		}else if(e.getActionCommand().equals("Eliminar")) {
 			Clinica.getInstance().removePaciente(this.vista.getPaciente());
+			this.vista.actulizarLista();
 		}
-		this.vista.actulizarLista();
+		
 	}
 	
 	
 	@Override
 	public void windowOpened(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
+//		File archivo = new File("Pacientes.dat");
+//		if(archivo.exists()) {
+//			Clinica.getInstance().setPacientesRegistrados(PersistenciaGeneral.recuperaInformacionPacientes());
+//			Paciente.setSiguienteNumero(Clinica.getInstance().getPacientesRegistrados().size());		
+//		}
+//		this.vista.actulizarLista();
+//		
 	}
 	@Override
 	public void windowClosing(WindowEvent e) {
+		PersistenciaGeneral.guardaInformacionPacientes(Clinica.getInstance().getPacientesRegistrados());
 		Controlador_Menu controlador_menu = new Controlador_Menu();
 		
 	}

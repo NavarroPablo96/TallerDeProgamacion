@@ -22,14 +22,14 @@ public class PersistenciaGeneral {
 	 * <b>Pre: </b> El archivo con ese nombre debe existir.<br>
 	 * <b>Post: </b> Se retorna un HashMap de Pacientes, con los datos del archivo.
 	 * */
-	public static HashMap<Long,Paciente> recuperaInformacionPacientes(){
+	public static HashMap<String,Paciente> recuperaInformacionPacientes(){
 		
 		IPersistencia<Serializable> persistencia = new Persistencia();
-		HashMap<Long,Paciente> pacientes = null;
+		HashMap<String,Paciente> pacientes = null;
         try
         {
             persistencia.abrirInput("Pacientes.dat");
-            pacientes=(HashMap<Long, Paciente>) persistencia.leer();
+            pacientes=(HashMap<String, Paciente>) persistencia.leer();
             persistencia.cerrarInput();
         } catch (ClassNotFoundException e)
         {
@@ -46,7 +46,7 @@ public class PersistenciaGeneral {
 	 * <b>Post: </b> Se guardo la información de los pacientes en el archivo.
 	 * @param pacientes: HashMap de Pacientes a almacenar en el archivo.
 	 * */
-	public static void guardaInformacionPacientes(HashMap<Long, Paciente> pacientes) {
+	public static void guardaInformacionPacientes(HashMap<String, Paciente> pacientes) {
 		 IPersistencia<Serializable>  persistencia = new Persistencia();
 		 
 		try

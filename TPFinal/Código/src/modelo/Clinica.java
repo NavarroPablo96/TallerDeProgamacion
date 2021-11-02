@@ -27,9 +27,6 @@ import excepciones.OrdenFechasIncorrectoException;
  */
 
 public class Clinica {
-    public HashMap<Long, IMedico> getMedicos() {
-		return medicos;
-	}
 
 	/**
      * @aggregation composite
@@ -158,7 +155,7 @@ public class Clinica {
 	public void EgresoYFacturacion(Paciente paciente, HashMap<String, Prestacion> prestaciones) throws NoEstaPacienteException{
 		if (listaAtencion.containsKey(paciente.getNroHistoria())) {
 			Factura f = new Factura(paciente, prestaciones);
-			paciente.agregarPrestaciones(prestaciones);
+//			paciente.agregarPrestaciones(prestaciones);
 			this.facturas.add(f);
 			f.mostrarFactura();
 			listaAtencion.remove(paciente.getNroHistoria());
@@ -233,8 +230,8 @@ public class Clinica {
 	 *  @param nroMatricula: numero de matricula de un Medico
 	 *  @return retorna el medico al que pertenece el numero de matricula
 	 */
-	public Medico getMedico(long nroMatricula) {
-		return (Medico) medicos.get(nroMatricula);
+	public IMedico getMedico(long nroMatricula) {
+		return medicos.get(nroMatricula);
 	}
 
 	/**
@@ -333,5 +330,13 @@ public class Clinica {
     public void removeMedico(IMedico medico) {
        	if(this.medicos.containsKey(medico.getNroMatricula()))
        		this.medicos.remove(medico.getNroMatricula());
+    }
+    
+    public HashMap<Long, IMedico> getMedicos() {
+    	return this.medicos;
+    }
+    
+    public void agregaHabitacion(Habitacion habitacion) {
+    	this.habitaciones.put(habitacion.getNumeroHabitacion(), habitacion);
     }
 }

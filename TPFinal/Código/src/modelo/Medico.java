@@ -57,13 +57,13 @@ public class Medico extends Persona implements IMedico{
 		return consultas;
 	}
 	
-	public String toString() {
-		return "Matricula: " + this.getNroMatricula()+
-				"\nNombre y apellido: " + this.getNombre() +" "+ this.getApellido()+ 
-				"\nDni: " + this.getDni()+
-				"\nCiudad y domicilio: " + this.getCiudad() + this.getDomicilio()+
-				"\nTelefono:" + this.getTelefono() + "\n";
-	}
+//	public String toString() {
+//		return "Matricula: " + this.getNroMatricula()+
+//				"\nNombre y apellido: " + this.getNombre() +" "+ this.getApellido()+ 
+//				"\nDni: " + this.getDni()+
+//				"\nCiudad y domicilio: " + this.getCiudad() + this.getDomicilio()+
+//				"\nTelefono:" + this.getTelefono() + "\n";
+//	}
 
 	@Override
 	public int hashCode() {
@@ -87,6 +87,10 @@ public class Medico extends Persona implements IMedico{
 		return true;
 	}	
 	
-	
+	@Override
+	public String toString() {
+		return "N°" + this.nroMatricula + " " + getNombre() + " "
+				+ getApellido();
+	}
 	
 }

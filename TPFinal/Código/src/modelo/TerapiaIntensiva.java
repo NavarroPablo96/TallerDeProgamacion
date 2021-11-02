@@ -41,5 +41,9 @@ public class TerapiaIntensiva extends Habitacion {
 	public double getCosto(int dias) {
 		return Habitacion.costoAsignacion + Math.pow(TerapiaIntensiva.costoTerapiaIntensiva, dias);
 	}
+	
+	public String toString() {
+		return super.toString() + " Terapia Intensiva";
+	}
 
 }

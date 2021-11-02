@@ -15,6 +15,10 @@ import modelo.Medico;
 public abstract class DecoratorMedico implements IMedico,Serializable{
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * @aggregation shared
      */
     protected IMedico encapsulado;
@@ -63,6 +67,10 @@ public abstract class DecoratorMedico implements IMedico,Serializable{
 	
 	public void agregarConsulta(ConsultaMedica consulta) {
 		this.encapsulado.agregarConsulta(consulta);
+	}
+	
+	public String toString() {
+		return encapsulado.toString();
 	}
 	
 }

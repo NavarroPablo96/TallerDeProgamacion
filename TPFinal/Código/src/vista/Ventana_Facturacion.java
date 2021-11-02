@@ -199,7 +199,6 @@ public class Ventana_Facturacion extends JFrame implements  KeyListener , IVista
 		
 		comboBox_Habitacion = new JComboBox<Habitacion>();
 		comboBox_Habitacion.setMaximumRowCount(3);
-//		System.out.println(Clinica.getInstance().getHabitaciones());
 		for(Habitacion i:Clinica.getInstance().getHabitaciones().values()) {
 
 			comboBox_Habitacion.addItem(i);	

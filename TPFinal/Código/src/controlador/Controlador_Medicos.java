@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
 
 import decorators.IMedico;
 import excepciones.MedicoYaExisteException;
@@ -15,6 +16,7 @@ import modelo.Medico;
 import modelo.MedicoFactory;
 import modelo.Niño;
 import modelo.Paciente;
+import persistencia.PersistenciaGeneral;
 import vista.IVista;
 import vista.IVistaMedicos;
 import vista.IVistaPaciente;
@@ -48,20 +50,22 @@ public class Controlador_Medicos implements ActionListener, WindowListener{
 			
 				this.vista.error(e1.getMessage());
 			}
+			this.vista.actulizarLista();
+
 		}else if(e.getActionCommand().equals("Eliminar")) {
 			Clinica.getInstance().removeMedico(this.vista.getMedico());
+			this.vista.actulizarLista();
 		}
-		this.vista.actulizarLista();
 	}
 	
 	
 	@Override
-	public void windowOpened(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void windowOpened(WindowEvent e) {	
 	}
+	
 	@Override
 	public void windowClosing(WindowEvent e) {
+		PersistenciaGeneral.guardaInformacionMedicos(Clinica.getInstance().getMedicos());
 		Controlador_Menu controlador_menu = new Controlador_Menu();
 		
 	}

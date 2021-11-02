@@ -51,4 +51,7 @@ public class Privada extends Habitacion {
 		return this.costoAsignacion + resultado;
 	}
 
+	public String toString() {
+		return super.toString() + " Privada";
+	}
 }

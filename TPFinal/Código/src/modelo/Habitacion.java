@@ -23,6 +23,7 @@ public abstract class Habitacion implements Serializable {
 	 */
 	public Habitacion(String numeroHabitacion) {
 		this.numeroHabitacion = numeroHabitacion;
+		Clinica.getInstance().agregaHabitacion(this);
 	}
 
 	public static void setCostoAsignacion(double costo) {
@@ -41,5 +42,8 @@ public abstract class Habitacion implements Serializable {
 	
 	public abstract double getCosto(int dias);
 	
+	public String toString() {
+		return this.numeroHabitacion;
+	}
 	
 }

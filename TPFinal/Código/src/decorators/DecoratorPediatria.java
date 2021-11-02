@@ -7,6 +7,11 @@ package decorators;
 public class DecoratorPediatria extends DecoratorMedico {
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Constructor con un parametro para setear el medico a decorar
 	 * <br>
 	 * @param encapsulado : parametro de tipo IMedico que representa el medico a decorar
@@ -25,7 +30,6 @@ public class DecoratorPediatria extends DecoratorMedico {
 	}
 	
 	public String toString() {
-		return encapsulado.toString() + 
-				"Especialidad: Pediatria";
+		return encapsulado.getNombre()+" "+ encapsulado.getApellido() +" "+ encapsulado.getNroMatricula();
 	}
 }
