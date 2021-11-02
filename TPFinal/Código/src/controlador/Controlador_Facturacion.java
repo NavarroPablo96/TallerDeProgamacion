@@ -17,7 +17,7 @@ import vista.IVista;
 import vista.IVistaFacturacion;
 import vista.Ventana_Facturacion;
 /**
- * @author Imanol Vázquez,Juan Manuel Mujica,Francisco Stimmler,Sebastian Agüero   
+ * @author Ivo Vucetic,Juan Manuel Mujica,Pablo Navarro,Sebastian Agüero   
  *<br>
  *Controlador para la ventana de facturacion
  */
@@ -83,13 +83,13 @@ public class Controlador_Facturacion implements ActionListener,WindowListener{
 
 	@Override
 	public void windowOpened(WindowEvent e) {
-//		File archivo = new File("Facturas.dat");
-//		if(archivo.exists()) {
-//			Clinica.getInstance().setFacturas(PersistenciaGeneral.recuperaInformacionFacturas());
-//			Factura.setSiguienteNumero(Clinica.getInstance().getFacturas().size());
-//		}
+
 	}
 
+	/**
+	 *Metodo que se encarga de generar un archivo Facturas.dat con todas las facturas luego de cerrar la ventana<br>
+	 *<b>Post:<b>Se genera un archivo Facturas.dat
+	 */
 	@Override
 	public void windowClosing(WindowEvent e) {
 		if(Clinica.getInstance().getUltimaFactura()!=null && Clinica.getInstance().getUltimaFactura().getTotal()==0) {

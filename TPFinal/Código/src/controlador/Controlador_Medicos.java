@@ -24,7 +24,7 @@ import vista.Ventana_Medicos;
 import vista.Ventana_Paciente;
 
 /**
- * @author Imanol Vázquez,Juan Manuel Mujica,Francisco Stimmler,Sebastian Agüero   
+ * @author Ivo Vucetic,Juan Manuel Mujica,Pablo Navarro,Sebastián Agüero   
  *<br>
  *Controlador para la ventana de asociados
  */
@@ -63,6 +63,10 @@ public class Controlador_Medicos implements ActionListener, WindowListener{
 	public void windowOpened(WindowEvent e) {	
 	}
 	
+	/**
+	 *Metodo que se encarga de generar un archivo Medicos.dat con todos los Medicos luego de cerrar la ventana<br>
+	 *<b>Post:<b>Se genera un archivo Medicos.dat
+	 */
 	@Override
 	public void windowClosing(WindowEvent e) {
 		PersistenciaGeneral.guardaInformacionMedicos(Clinica.getInstance().getMedicos());

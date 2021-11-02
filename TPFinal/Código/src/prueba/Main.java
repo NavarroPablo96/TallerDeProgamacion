@@ -2,7 +2,6 @@ package prueba;
 
 import java.util.HashMap;
 
-import controlador.Controlador;
 import decorators.IMedico;
 import excepciones.NoEstaPacienteException;
 import modelo.Clinica;
@@ -24,6 +23,10 @@ public class Main
 	/**
 	 * @param args
 	 */
+	
+	// ESTE MAIN NO LO USAMOS, REPITO NO LO USAMOS PASENME MAYUSCULAS MAS GRANDES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	
+	
 	public static void main(String[] args) {
 	
 	//Creo pacientes
@@ -89,7 +92,7 @@ public class Main
 	}
 	
 	
-	Controlador controlador = new Controlador();
+//	Controlador controlador = new Controlador();
 
 	Paciente paciente3 = new Joven("37892345", "Pedro", "A", "Luro920", "mdp", "459-4312");
 	Paciente paciente4 = new Niño("20892345", "Marcos", "Apel", "Const92", "mdp", "459-4312");

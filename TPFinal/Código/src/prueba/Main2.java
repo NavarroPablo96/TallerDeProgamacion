@@ -6,6 +6,8 @@ import modelo.Habitacion;
 import modelo.Privada;
 import modelo.TerapiaIntensiva;
 
+//USEN ESTE MAIN PARA TESTEAR LAS VENTANAS Y ESAS COSAS
+
 public class Main2 {
 
 	public static void main(String[] args) {

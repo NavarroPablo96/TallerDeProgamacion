@@ -48,6 +48,11 @@ public class Controlador_Menu implements ActionListener,WindowListener{
 	}
 
 
+	/**
+	 *Metodo que se encarga de la recuperacion de los archivos Facturas.dat Medicos.dat Pacientes.dat
+	 *y los carga en el sistema<br>
+	 *<b>Post<b> Se cargaron lso datos de los archivos si es que existen
+	 */
 	@Override
 	public void windowOpened(WindowEvent e) {
 		File archivoFacturas = new File("Facturas.dat");
@@ -72,9 +77,6 @@ public class Controlador_Menu implements ActionListener,WindowListener{
 
 	@Override
 	public void windowClosing(WindowEvent e) {
-//		PersistenciaGeneral.guardaInformacionPacientes(Clinica.getInstance().getPacientesRegistrados());
-//		PersistenciaGeneral.guardaInformacionMedicos(Clinica.getInstance().getMedicos());
-//		PersistenciaGeneral.guardaInformacionFacturas(Clinica.getInstance().getFacturas());
 	}
 
 

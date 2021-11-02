@@ -61,14 +61,13 @@ public class Controlador_Pacientes implements ActionListener, WindowListener{
 	
 	@Override
 	public void windowOpened(WindowEvent e) {
-//		File archivo = new File("Pacientes.dat");
-//		if(archivo.exists()) {
-//			Clinica.getInstance().setPacientesRegistrados(PersistenciaGeneral.recuperaInformacionPacientes());
-//			Paciente.setSiguienteNumero(Clinica.getInstance().getPacientesRegistrados().size());		
-//		}
-//		this.vista.actulizarLista();
-//		
 	}
+	
+	/**
+	 *
+	 * Metodo que se encarga de generar un archivo Pacientes.dat con todos los pacientes luego de cerrar la ventana<br>
+	 *<b>Post:<b>Se genera un archivo Pacientes.dat
+	 */
 	@Override
 	public void windowClosing(WindowEvent e) {
 		PersistenciaGeneral.guardaInformacionPacientes(Clinica.getInstance().getPacientesRegistrados());
