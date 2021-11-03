@@ -226,7 +226,9 @@ public class Ventana_Paciente extends JFrame implements  KeyListener , IVistaPac
 	}
 	
 	/**
-	 * Metodo que actualiza la lista de asociados
+	 * Metodo que actualiza la lista de Pacientes.
+	 * <b>pre:<b> Clinica != null.
+	 * <b>pos:<b> Se actualiza el panel de la ventana con los nuevos pacientes ingresados.
 	 */
 	public void actulizarLista() {
 		
@@ -361,9 +363,8 @@ public class Ventana_Paciente extends JFrame implements  KeyListener , IVistaPac
 	}
 	
     /**
-	 * Método que devuelve el item seleccionado del comboBox, en formato String<br>
-	 * @return devuelve el nombre del item que representa el tipo de dato del archivo que se 
-	 * quiere guardar o recuperar. El cual puede ser "Pacientes", "Medicos" o "Facturas"
+	 * Método que devuelve el item seleccionado del comboBox de rango etario de un paciente, en formato String<br>
+	 * @return Devuelve un String del rango etario de un paciente el cual puede ser: niño, joven o Mayor. 
 	 */
 	@Override
 	public String getMensajeRangoEtario() {

@@ -25,6 +25,7 @@ public class Controlador_Facturacion implements ActionListener,WindowListener{
 
 	private IVistaFacturacion vista = null;
 	private boolean isnuevafactura;
+	
 	/**
      * Constructor sin parametros, al momento de crear el controlador crea la ventana<br>
      *
@@ -88,7 +89,7 @@ public class Controlador_Facturacion implements ActionListener,WindowListener{
 
 	/**
 	 *Metodo que se encarga de generar un archivo Facturas.dat con todas las facturas luego de cerrar la ventana<br>
-	 *<b>Post:<b>Se genera un archivo Facturas.dat
+	 *<b>Post:<b>Se genera un archivo Facturas.dat, con los datos de la factura. O un archivo vacio en caso de que no se hayan ingresado datos.
 	 */
 	@Override
 	public void windowClosing(WindowEvent e) {

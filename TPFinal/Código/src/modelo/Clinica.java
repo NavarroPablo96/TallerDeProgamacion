@@ -94,6 +94,7 @@ public class Clinica {
 	 * <b>Pre: </b> El parametro medico debe ser distinto de null.<br>
 	 * <b>Post: </b> Se agrega un medico mas al HashMap de médicos.<br>
 	 * @param medico: Parámetro que será agregado al HashMap de médicos.
+	 * @throws MedicoYaExisteException: Se lanza en caso de que la matricula ya este registrada.
 	 */
 	
 	public void addMedico(IMedico medico) throws MedicoYaExisteException{
@@ -213,7 +214,6 @@ public class Clinica {
 	}
 
 	public void setPacientesRegistrados(HashMap<String, Paciente> pac) {
-		// TODO Auto-generated method stub
 		for(HashMap.Entry<String,Paciente> i:pac.entrySet()) {
 			this.pacientesRegistrados.put(i.getKey(),i.getValue());
 		}
@@ -327,6 +327,12 @@ public class Clinica {
        		this.pacientesRegistrados.remove(paciente.getDni());
     }
     
+    /**
+     *  Borra un medico pasado por parámetro, siempre y cuando exista su numero de matricula.<br>
+   	 * <b>Pre: </b> Parámetro medico =! null y la lista de medicos =! null.<br>
+   	 * <b>Post: </b> Se borra un medico del Hashmap de medicos.<br>
+   	 * @param medico: Parámetro que indica al medico que será borrado del HashMap de medicos.
+     */
     public void removeMedico(IMedico medico) {
        	if(this.medicos.containsKey(medico.getNroMatricula()))
        		this.medicos.remove(medico.getNroMatricula());

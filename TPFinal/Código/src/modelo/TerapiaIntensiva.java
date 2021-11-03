@@ -33,6 +33,7 @@ public class TerapiaIntensiva extends Habitacion {
 	 * Modulo que devuelve el costo de una habitacion de terapia intensiva segun los dias más el costo de asginación.
 	 * <br>
 	 * <b> Pre: </b> El parámetro dias debe ser positivo.
+	 * <b> Pos: </b> Devuelve el costo de una habitacion de terapia intensiva segun los dias más el costo de asginación.
 	 * @param dias: parametro de tipo int que representa los dias que estuvo el paciente. 
 	 * @return devuelve costo de la habitacion compartida elevado por la cantidad de dias más el costo de asiganción.
 	 * 

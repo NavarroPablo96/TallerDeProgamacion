@@ -31,7 +31,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 /**
- * @author Imanol Vázquez,Juan Manuel Mujica,Francisco Stimmler,Sebastian Agüero   
+ * @author Ivo Vucetic,Juan Manuel Mujica,Pablo Navarro,Sebastián Agüero.<br>   
  *<br>
  * JFrame que representa la ventana donde se gestionan los asociados. Se extiende de JFrame e implementa KeyListener, IVistaAsociado y MouseListener.
  */
@@ -53,7 +53,7 @@ public class Ventana_Medicos extends JFrame implements  KeyListener , IVistaMedi
 	private JPanel panel_Tipo;
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	/**
-	 * Constructor sin parametros que crea la ventana asociados
+	 * Constructor sin parametros que crea la ventana de medicos.
 	 */
 	public Ventana_Medicos() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -257,7 +257,9 @@ public class Ventana_Medicos extends JFrame implements  KeyListener , IVistaMedi
 	}
 	
 	/**
-	 * Metodo que actualiza la lista de asociados
+	 * Metodo que actualiza la lista de medicos.
+	 * <b>pre:<b> Clinica != null.
+	 * <b>pos:<b> Se actualiza el panel de la ventana con los nuevos medicos ingresados.
 	 */
 	public void actulizarLista() {
 		
@@ -403,20 +405,27 @@ public class Ventana_Medicos extends JFrame implements  KeyListener , IVistaMedi
 	}
 	
     /**
-	 * Método que devuelve el item seleccionado del comboBox, en formato String<br>
-	 * @return devuelve el nombre del item que representa el tipo de dato del archivo que se 
-	 * quiere guardar o recuperar. El cual puede ser "Pacientes", "Medicos" o "Facturas"
+	 * Método que devuelve el item seleccionado del comboBox de especialidades de un medico, en formato String<br>
+	 * @return Devuelve un String del nombre de la especialidad del medico. El cual puede ser "Cirujia", "Clinica" o "Pediatria".
 	 */
 	@Override
 	public String getMensajeEspecialidad() {
 		return (String)comboBox_Especialidad.getSelectedItem();
 	}
 	
+	/**
+	 * Método que devuelve el item seleccionado del comboBox de contratacion de un medico, en formato String<br>
+	 * @return Devuelve un String del nombre del tipo de contratacion del medico. El cual puede ser "Permanente" y "residente".
+	 */
 	@Override
 	public String getMensajeContratacion() {
 		return (String)comboBox_Contratacion.getSelectedItem();
 	}
 	
+	/**
+	 *Método que devuelve el item seleccionado del comboBox de titulo de un medico, en formato String<br>
+	 * @return Devuelve un String del nombre del titulo de un medico. El cual puede ser "Doctorado" y "Magister".
+	 */
 	@Override
 	public String getMensajeTitulo() {
 		return (String)comboBox_Titulo.getSelectedItem();

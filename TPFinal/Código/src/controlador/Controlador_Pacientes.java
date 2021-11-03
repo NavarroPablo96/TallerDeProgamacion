@@ -18,12 +18,13 @@ import vista.IVistaPaciente;
 import vista.Ventana_Paciente;
 
 /**
- * @author Imanol Vázquez,Juan Manuel Mujica,Francisco Stimmler,Sebastian Agüero   
+ * @author Ivo Vucetic,Juan Manuel Mujica,Pablo Navarro,Sebastián Agüero  
  *<br>
- *Controlador para la ventana de asociados
+ *Controlador para la ventana de Pacientes.
  */
 public class Controlador_Pacientes implements ActionListener, WindowListener{
 	private IVistaPaciente vista = null;
+	
 	/**
      * Constructor sin parametros, al momento de crear el controlador crea la ventana<br>
      *
@@ -65,8 +66,8 @@ public class Controlador_Pacientes implements ActionListener, WindowListener{
 	
 	/**
 	 *
-	 * Metodo que se encarga de generar un archivo Pacientes.dat con todos los pacientes luego de cerrar la ventana<br>
-	 *<b>Post:<b>Se genera un archivo Pacientes.dat
+	 * Metodo que se encarga de generar un archivo Pacientes.dat con todos los pacientes luego de cerrar la ventana.<br>
+	 *<b>Post:<b>Se genera un archivo Pacientes.dat, con los pacientes ingresados o un archivo vacio en caso de no haberse cargado datos.
 	 */
 	@Override
 	public void windowClosing(WindowEvent e) {

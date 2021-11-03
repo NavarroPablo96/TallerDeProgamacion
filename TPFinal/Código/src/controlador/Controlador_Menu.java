@@ -15,7 +15,7 @@ import persistencia.PersistenciaGeneral;
 import vista.IVistaMenu;
 import vista.Ventana_Menu;
 /**
- * @author Imanol Vázquez,Juan Manuel Mujica,Francisco Stimmler,Sebastian Agüero   
+ * @author Ivo Vucetic,Juan Manuel Mujica,Pablo Navarro,Sebastián Agüero   
  *<br>
  *Controlador para la ventana del menu
  */
@@ -49,9 +49,9 @@ public class Controlador_Menu implements ActionListener,WindowListener{
 
 
 	/**
-	 *Metodo que se encarga de la recuperacion de los archivos Facturas.dat Medicos.dat Pacientes.dat
+	 *Metodo que se encarga de la recuperacion de los archivos Facturas.dat Medicos.dat Pacientes.dat solo la primera vez que se abre la ventana
 	 *y los carga en el sistema<br>
-	 *<b>Post<b> Se cargaron lso datos de los archivos si es que existen
+	 *<b>Post<b> Se cargaron los datos de los archivos si es que existen.
 	 */
 	@Override
 	public void windowOpened(WindowEvent e) {
