@@ -1,0 +1,110 @@
+
+TPFinal
+
+
+Testear con caja negra para la totalidad de lo métodos:
+
+Carpeta		Clase
+controlador	Controlador
+	public Controlador(Interfaz ventana)
+	public void altaPaciente(String nombre, String apellido, String DNI, String domicilio, String ciudad, String telefono, String rangoEtario) throws MismoDniExcepcion 
+	public void agregarMedico(String nombre, String apellido, String DNI, String domicilio, String ciudad, String telefono, double sueldoBase, String especialidad, String posgrado, String contratacion) throws MismoDniExcepcion
+	public void muestraFacturaRangoFechas (int diaI, int mesI, int anioI,int diaF, int mesF,int anioF)
+decorator	DecoratorContratacion
+	public IMedico getEncapsulado()
+	public void setEncapsulado(IMedico encapsulado)
+	public DecoratorContratacion(IMedico encapsulado)
+	public String getPrestacion()
+	public double getValorUnitarioPrestacion()
+	public String getClavePrimariaString()
+	public String getNombre()
+	public String getDni()
+decorator	DPermanente
+decorator	DResidente
+decorator	DecoratorPosgrado
+decorator	DMagister
+decorator	DDoctor
+
+
+
+
+
+
+
+
+
+
+
+modelo		Clinica
+
+	Clinica 		instance		static
+	String 			nombre
+	HashMap:		pacientes
+				Habitacion
+				atencion
+				medicos
+				historiaClinicaHashMap
+	Queue<Paciente> 	colaDeEspera
+	ArrayList<Factura> 	facturas
+	Sala_privada 		salaPriv
+	Patio 			pat
+	int 			nroORden		static
+
+
+public static Clinica getInstance()
+private Clinica()
+
+public HashMap<String, Paciente> getAtencion()
+public void setAtencion(HashMap<String, Paciente> atencion)
+
+public ArrayList<Factura> getFacturas()
+public void setFacturas(ArrayList<Factura> facturas)
+
+public HashMap<String, Paciente> getPacientes()
+public void setPacientes(HashMap<String, Paciente> pacientes)
+
+public HashMap<String, IMedico> getMedicos()
+public void setMedicos(HashMap<String, IMedico> medicos)
+
+public HashMap<String, HistoriaClinica> getHistoriaClinicaHashMap()
+public void setHistoriaClinicaHashMap(HashMap<String, HistoriaClinica> historiaClinicaHashMap)
+
+public void setNombre(String nombre)
+public String getNombre()
+
+
+public void agregaPrestacion(Prestacion prestacion, String nombre, String apellido, String dni)
+public void agregarMedico(IMedico medico) throws MismoDniExcepcion
+public void removerMedico(String dni) throws MedicoNoEncontradoException
+public void altaPaciente(Paciente p) throws MismoDniExcepcion
+public IMedico devuelveMedico(String dni) throws MedicoNoEncontradoException
+public Paciente consultarPaciente(String dni) throws PacienteNoEncontradoExcepcion
+public void removerPaciente(String dni) throws PacienteNoEncontradoExcepcion
+public void modPacienteNomyApe(String dni, String nom, String ape) throws PacienteNoEncontradoExcepcion
+public void modPacienteDom(String dni, String dom) throws PacienteNoEncontradoExcepcion
+public void modPacienteTel(String dni, String tel) throws PacienteNoEncontradoExcepcion
+public void ingresaPaciente(Paciente p)
+public void atenderPaciente()
+public void muestraPacientesAtencion()
+public void muestraPacSalaPriv()
+public void muestraPacPatio()
+public void agregarPrestacionAPaciente(Paciente paciente, Prestacion prestacion)
+public String darAltaYFacturar(Paciente paciente, GregorianCalendar fecha) throws PacienteNoEncontradoExcepcion
+public void reporteActividadMedica(IMedico medico, GregorianCalendar desde, GregorianCalendar hasta)
+public void muestraFacturaRangoFechas(GregorianCalendar desde, GregorianCalendar hasta)
+public String muestraFecha(GregorianCalendar fecha)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
