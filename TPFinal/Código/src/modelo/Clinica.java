@@ -346,6 +346,14 @@ public class Clinica {
     	this.habitaciones.put(habitacion.getNumeroHabitacion(), habitacion);
     }
     
+    /**
+	 * <b>PRE: <b>Parametros distinto de null.<br>La fecha esta validada.<br>El numero de factura es > 0.<br>.La lista de insumos puede ser null, vacia o 
+	 * 			con elementos.<br> 
+	 * @param numeroDeFactura
+	 * @param fechaDeSolicitud
+	 * @param listDeInsumos
+	 * @return retorna el importe Final
+	 */
     public double calculoImporteAdicionales(int numeroDeFactura, Calendar fechaDeSolicitud, ArrayList<Double> listaDeInsumos) {
     	
     	double A=0.6, B=0.35, C=1.1, D=0.75;
