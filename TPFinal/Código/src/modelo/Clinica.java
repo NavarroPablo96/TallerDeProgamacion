@@ -21,9 +21,9 @@ import excepciones.NoHayConsultaException;
 import excepciones.OrdenFechasIncorrectoException;
 
 /**
- * @author Imanol Vázquez,Juan Manuel Mujica,Francisco Stimmler,Sebastian Agüero   
+ * @author Imanol Vï¿½zquez,Juan Manuel Mujica,Francisco Stimmler,Sebastian Agï¿½ero   
  *<br>
- *Clase que representa a la clínica.
+ *Clase que representa a la clï¿½nica.
  */
 
 public class Clinica {
@@ -61,20 +61,20 @@ public class Clinica {
 	DecimalFormat df = new DecimalFormat("#.00");
 	
 	/**
-	 * Constructor para crear la Clínica, con valores ya establecidos.
+	 * Constructor para crear la Clï¿½nica, con valores ya establecidos.
 	 */
 	
 	private Clinica() {
 		this.nombre = "Clinica 1";
-		this.direccion = "Colón 2321";
+		this.direccion = "Colï¿½n 2321";
 		this.telefono = "223895648";
 		this.ciudad = "Mar del Plata";
 		this.salaPrivada = null;
 	}
 	
 	/**
-	 * Se aplicó Patrón Singleton.
-	 * Se obtiene (o se crea en caso que no esté creada) la instancia a la clínica.
+	 * Se aplicï¿½ Patrï¿½n Singleton.
+	 * Se obtiene (o se crea en caso que no estï¿½ creada) la instancia a la clï¿½nica.
 	 */
 	
 	public static Clinica getInstance() {
@@ -90,10 +90,10 @@ public class Clinica {
 	}
 
 	/**
-	 * Agrega un médico al Hashmap de médicos, con su número de matrícula como clave.<br>
+	 * Agrega un mï¿½dico al Hashmap de mï¿½dicos, con su nï¿½mero de matrï¿½cula como clave.<br>
 	 * <b>Pre: </b> El parametro medico debe ser distinto de null.<br>
-	 * <b>Post: </b> Se agrega un medico mas al HashMap de médicos.<br>
-	 * @param medico: Parámetro que será agregado al HashMap de médicos.
+	 * <b>Post: </b> Se agrega un medico mas al HashMap de mï¿½dicos.<br>
+	 * @param medico: Parï¿½metro que serï¿½ agregado al HashMap de mï¿½dicos.
 	 * @throws MedicoYaExisteException: Se lanza en caso de que la matricula ya este registrada.
 	 */
 	
@@ -112,12 +112,12 @@ public class Clinica {
 	}
 	
 	/**
-	 * Módulo de ingreso de un paciente a la clínica.<br>
+	 * Mï¿½dulo de ingreso de un paciente a la clï¿½nica.<br>
 	 * <b>Pre: </b> El parametro paciente debe ser distinto de null<br>
 	 * <b>Post: </b> Si el paciente no estaba registrado, se lo registra con su DNI.<br>
 	 * Se agrega al paciente a la lista de espera.<br>
-	 * Si la sala privada estaba vacía o si el paciente entrante tiene prioridad sobre el que ya estaba allí, se lo asigna a la sala privada, si no, se lo manda al patio.
-	 * @param paciente: Paciente que ingresa a la clínica.
+	 * Si la sala privada estaba vacï¿½a o si el paciente entrante tiene prioridad sobre el que ya estaba allï¿½, se lo asigna a la sala privada, si no, se lo manda al patio.
+	 * @param paciente: Paciente que ingresa a la clï¿½nica.
 	 */
 	
 	public void Ingreso(Paciente paciente) {
@@ -131,9 +131,9 @@ public class Clinica {
 	}
 	
 	/**
-	 * Módulo que retira al paciente de la espera y lo ubica en la Lista de Pacientes en Atención.<br>
+	 * Mï¿½dulo que retira al paciente de la espera y lo ubica en la Lista de Pacientes en Atenciï¿½n.<br>
 	 * <b>Pre: </b> Debe haber al menos un paciente en la lista de espera.
-	 * <b>Post: </b> Se retira al siguiente paciente de la lista de espera y se lo pone en atención.
+	 * <b>Post: </b> Se retira al siguiente paciente de la lista de espera y se lo pone en atenciï¿½n.
 	 */
 	
 	public void Atencion() {
@@ -146,11 +146,11 @@ public class Clinica {
 	}
 	
 	/**
-	 * Módulo que elige un paciente, lo retira de la lista de atención y realiza la facturación correspondiente.<br>
+	 * Mï¿½dulo que elige un paciente, lo retira de la lista de atenciï¿½n y realiza la facturaciï¿½n correspondiente.<br>
 	 * <b>Pre: </b> El parametro paciente debe ser distinto de null.<br>
-	 * <b>Post: </b> Se crea una factura, se la agrega a la lista de facturas de la clínica y se retira al paciente de la lista de atención.
-	 * @param paciente: Paciente que se retira de atención y al cual se le genera la factura.
-	 * @param prestaciones: Prestaciones que recibió el paciente y que figurarán en la factura.
+	 * <b>Post: </b> Se crea una factura, se la agrega a la lista de facturas de la clï¿½nica y se retira al paciente de la lista de atenciï¿½n.
+	 * @param paciente: Paciente que se retira de atenciï¿½n y al cual se le genera la factura.
+	 * @param prestaciones: Prestaciones que recibiï¿½ el paciente y que figurarï¿½n en la factura.
 	 */
 	
 	public void EgresoYFacturacion(Paciente paciente, HashMap<String, Prestacion> prestaciones) throws NoEstaPacienteException{
@@ -162,14 +162,14 @@ public class Clinica {
 			listaAtencion.remove(paciente.getNroHistoria());
 		}
 		else
-			throw new NoEstaPacienteException("El paciente no se encuentra en la lista de atención.");
+			throw new NoEstaPacienteException("El paciente no se encuentra en la lista de atenciï¿½n.");
 	}
 	
 	/**
-	 * Módulo que reporta la actividad de un médico entre dos fechas dadas, enumerando los pacientes atendidos.<br>
-	 * <b>Pre: </b> Todos los parámetros deben ser distintos de null.<br>
-	 * <b>Post: </b> Se muestran las facturas correspondientes al período dado.<br>
-	 * @param medico: Médico del cual se realice el reporte de actividad.
+	 * Mï¿½dulo que reporta la actividad de un mï¿½dico entre dos fechas dadas, enumerando los pacientes atendidos.<br>
+	 * <b>Pre: </b> Todos los parï¿½metros deben ser distintos de null.<br>
+	 * <b>Post: </b> Se muestran las facturas correspondientes al perï¿½odo dado.<br>
+	 * @param medico: Mï¿½dico del cual se realice el reporte de actividad.
 	 * @param fecha1: Fecha desde la cual se solicita el reporte.
 	 * @param fecha2: Fecha hasta la cual se solicita el reporte.
 	 */
@@ -262,9 +262,9 @@ public class Clinica {
 	
 	/**
 	 * Agrega una Factura al Treeset de facturas.<br>
-	 * <b>Pre: </b> Parámetro tipo Factura distinto de null.<br>
+	 * <b>Pre: </b> Parï¿½metro tipo Factura distinto de null.<br>
 	 * <b>Post: </b> Se agrega una factura al Treeset de facturas.<br>
-	 * @param factura: Parámetro de tipo Factura que representa factura a agregar.
+	 * @param factura: Parï¿½metro de tipo Factura que representa factura a agregar.
 	 */
 	public void addFactura(Factura factura) {
 		this.facturas.add(factura);
@@ -278,14 +278,14 @@ public class Clinica {
 	}
 		
 	/**
-	 * Borra la última de las facturas, si tiene.<br>
+	 * Borra la ï¿½ltima de las facturas, si tiene.<br>
 	 */	
 	public void borrarUltimaFactura() {
 		this.facturas.pollLast();
 	}
 	
 	/**
-	 * Devuelve última factura si es que no está vacío el treeset de facturas, en caso contrario, lanza excepción.<br>
+	 * Devuelve ï¿½ltima factura si es que no estï¿½ vacï¿½o el treeset de facturas, en caso contrario, lanza excepciï¿½n.<br>
 	 */	
 	public Factura getUltimaFactura() {
 		try {
@@ -298,10 +298,10 @@ public class Clinica {
 	/**
 	 * Agrega un Paciente al Hashmap de pacientes, con su dni como clave.
 	 * Si no hay un paciente agregado con el mismo dni, lo agrega.
-	 * En caso contrario, lanza una excepción.<br>
+	 * En caso contrario, lanza una excepciï¿½n.<br>
 	 * <b>Pre: </b> El parametro paciente debe ser distinto de null.<br>
 	 * <b>Post: </b> Si se puede, se agrega un paciente mas al HashMap de pacientes.<br>
-	 * @param paciente: Parámetro que será agregado al HashMap de pacientes.
+	 * @param paciente: Parï¿½metro que serï¿½ agregado al HashMap de pacientes.
 	 */	
     public void addPaciente(Paciente paciente) throws PacienteYaExisteException {
     	Iterator it = this.pacientesRegistrados.values().iterator();
@@ -317,10 +317,10 @@ public class Clinica {
     }  
     
     /**
-   	 * Borra un paciente pasado por parámetro.<br>
-   	 * <b>Pre: </b> Parámetro distinto de null.<br>
+   	 * Borra un paciente pasado por parï¿½metro.<br>
+   	 * <b>Pre: </b> Parï¿½metro distinto de null.<br>
    	 * <b>Post: </b> Se borra un paciente del Hashmap de pacientes.<br>
-   	 * @param paciente: Parámetro que indica el paciente que será borrado del HashMap de asociados.
+   	 * @param paciente: Parï¿½metro que indica el paciente que serï¿½ borrado del HashMap de asociados.
    	 */	
     public void removePaciente(Paciente paciente) {
        	if(this.pacientesRegistrados.containsKey(paciente.getDni()))
@@ -328,10 +328,10 @@ public class Clinica {
     }
     
     /**
-     *  Borra un medico pasado por parámetro, siempre y cuando exista su numero de matricula.<br>
-   	 * <b>Pre: </b> Parámetro medico =! null y la lista de medicos =! null.<br>
+     *  Borra un medico pasado por parï¿½metro, siempre y cuando exista su numero de matricula.<br>
+   	 * <b>Pre: </b> Parï¿½metro medico =! null y la lista de medicos =! null.<br>
    	 * <b>Post: </b> Se borra un medico del Hashmap de medicos.<br>
-   	 * @param medico: Parámetro que indica al medico que será borrado del HashMap de medicos.
+   	 * @param medico: Parï¿½metro que indica al medico que serï¿½ borrado del HashMap de medicos.
      */
     public void removeMedico(IMedico medico) {
        	if(this.medicos.containsKey(medico.getNroMatricula()))
@@ -345,4 +345,50 @@ public class Clinica {
     public void agregaHabitacion(Habitacion habitacion) {
     	this.habitaciones.put(habitacion.getNumeroHabitacion(), habitacion);
     }
+    
+    public double calculoImporteAdicionales(int numeroDeFactura, Calendar fechaDeSolicitud, ArrayList<Double> listaDeInsumos) {
+    	
+    	double A=0.6, B=0.35, C=1.1, D=0.75;
+    	double importeTotal = 0;
+    	
+    	if(numeroDeFactura < Factura.getSiguienteNumero()) { //Si existe ese nro de factura.
+    		boolean encontrado = false;
+    		Iterator<Factura> iterator = facturas.iterator();
+    		Factura f = null;
+    		while (iterator.hasNext() && !encontrado) {
+    			f = iterator.next();
+    			encontrado = (f.getNroFactura() == numeroDeFactura);
+    		}
+    		int milisegundosEnUnDia = 86400000;
+    		int dias = (int) (fechaDeSolicitud.getTime().getTime() - f.getFecha().getTime().getTime()) / milisegundosEnUnDia;
+    		double importeParcial;
+    		if(dias < 10){
+    			double subTotalImpar=0;
+    			int j = 1;
+				for(Prestacion i : f.getPrestaciones().values()) {
+					if (j%2 == 0) {
+						subTotalImpar += i.getSubtotal();
+					}
+					j++;
+				}
+    			importeParcial = f.getTotal() - subTotalImpar * A;
+    		}
+    		else {
+    			importeParcial = f.getTotal();
+    		}
+    		if(f.getPaciente().esMayor()) {
+    			importeTotal = importeParcial * C;
+    		}
+    		else {
+    			importeTotal = importeParcial * D;
+    		}
+    		if((int)(Math.random()*31) + 1 != f.getFecha().DAY_OF_MONTH) {
+    			for(double i : listaDeInsumos) {
+    				importeTotal += i;
+    			}
+    		}
+    	}
+    	return importeTotal;
+    	}
+    
 }

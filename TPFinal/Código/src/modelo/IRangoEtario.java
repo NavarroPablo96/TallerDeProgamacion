@@ -1,7 +1,7 @@
 package modelo;
 
 /**
- * @author Imanol Vázquez,Juan Manuel Mujica,Francisco Stimmler,Sebastian Agüero   
+ * @author Imanol Vï¿½zquez,Juan Manuel Mujica,Francisco Stimmler,Sebastian Agï¿½ero   
  *<br>
  *Interfaz que representa el rango etario que posee un paciente.
  *Para determinar las prioridades de los pacientes se utiliza Double Dispatch.
@@ -10,29 +10,31 @@ package modelo;
 public interface IRangoEtario {
 
 	/**
-	 * Método que decide quién tiene prioridad para quedarse en la sala privada de la clínica, si el paciente que ya estaba allí o el que recién llega.
+	 * Mï¿½todo que decide quiï¿½n tiene prioridad para quedarse en la sala privada de la clï¿½nica, si el paciente que ya estaba allï¿½ o el que reciï¿½n llega.
 	 * <br>
-	 * <b>Pre: </b> El parámetro otro debe ser distinto de null.<br>
-	 * @param otro: parámetro de tipo Persona, contra el que se decidirá la prioridad.
+	 * <b>Pre: </b> El parï¿½metro otro debe ser distinto de null.<br>
+	 * @param otro: parï¿½metro de tipo Persona, contra el que se decidirï¿½ la prioridad.
 	 */
 	
 	boolean prioridad(Paciente otro);
 	
 	/**
-	 * Método que decide si el paciente que ya está en la sala privada tiene prioridad de quedarse allí, contra un niño que recién ingresa a la clínica.
+	 * Mï¿½todo que decide si el paciente que ya estï¿½ en la sala privada tiene prioridad de quedarse allï¿½, contra un niï¿½o que reciï¿½n ingresa a la clï¿½nica.
 	 */
 	
-	boolean prioridadNiño();
+	boolean prioridadNinio();
 	
 	/**
-	 * Método que decide si el paciente que ya está en la sala privada tiene prioridad de quedarse allí, contra un joven que recién ingresa a la clínica.
+	 * Mï¿½todo que decide si el paciente que ya estï¿½ en la sala privada tiene prioridad de quedarse allï¿½, contra un joven que reciï¿½n ingresa a la clï¿½nica.
 	 */
 	
 	boolean prioridadJoven();
 	
 	/**
-	 * Método que decide si el paciente que ya está en la sala privada tiene prioridad de quedarse allí, contra un mayor que recién ingresa a la clínica.
+	 * Mï¿½todo que decide si el paciente que ya estï¿½ en la sala privada tiene prioridad de quedarse allï¿½, contra un mayor que reciï¿½n ingresa a la clï¿½nica.
 	 */
 	
 	boolean prioridadMayor();
+	
+	boolean esMayor();
 }

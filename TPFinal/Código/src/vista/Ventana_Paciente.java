@@ -30,7 +30,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 /**
- * @author Imanol Vázquez,Juan Manuel Mujica,Francisco Stimmler,Sebastian Agüero   
+ * @author Imanol Vï¿½zquez,Juan Manuel Mujica,Francisco Stimmler,Sebastian Agï¿½ero   
  *<br>
  * JFrame que representa la ventana donde se gestionan los asociados. Se extiende de JFrame e implementa KeyListener, IVistaAsociado y MouseListener.
  */
@@ -201,7 +201,7 @@ public class Ventana_Paciente extends JFrame implements  KeyListener , IVistaPac
 		
 		comboBox_RangoEtario = new JComboBox();
 		comboBox_RangoEtario.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		comboBox_RangoEtario.setModel(new DefaultComboBoxModel(new String[] {"Ni\u00F1o", "Joven", "Mayor"}));
+		comboBox_RangoEtario.setModel(new DefaultComboBoxModel(new String[] {"Ninio", "Joven", "Mayor"}));
 		panelRangoEtario.add(comboBox_RangoEtario);
 		
 		JPanel panel_Botones = new JPanel();
@@ -241,7 +241,7 @@ public class Ventana_Paciente extends JFrame implements  KeyListener , IVistaPac
 	
 	
 	/**
-	 * Metodo que añade un Action Listener a cada boton de la ventana 
+	 * Metodo que aï¿½ade un Action Listener a cada boton de la ventana 
 	 */
 	@Override
 	public void addActionListener(ActionListener listener) {
@@ -363,8 +363,8 @@ public class Ventana_Paciente extends JFrame implements  KeyListener , IVistaPac
 	}
 	
     /**
-	 * Método que devuelve el item seleccionado del comboBox de rango etario de un paciente, en formato String<br>
-	 * @return Devuelve un String del rango etario de un paciente el cual puede ser: niño, joven o Mayor. 
+	 * Mï¿½todo que devuelve el item seleccionado del comboBox de rango etario de un paciente, en formato String<br>
+	 * @return Devuelve un String del rango etario de un paciente el cual puede ser: niï¿½o, joven o Mayor. 
 	 */
 	@Override
 	public String getMensajeRangoEtario() {

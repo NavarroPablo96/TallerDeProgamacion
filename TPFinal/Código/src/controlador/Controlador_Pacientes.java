@@ -10,7 +10,7 @@ import excepciones.PacienteYaExisteException;
 import modelo.Clinica;
 import modelo.Joven;
 import modelo.Mayor;
-import modelo.Niño;
+import modelo.Ninio;
 import modelo.Paciente;
 import persistencia.PersistenciaGeneral;
 import vista.IVista;
@@ -18,7 +18,7 @@ import vista.IVistaPaciente;
 import vista.Ventana_Paciente;
 
 /**
- * @author Ivo Vucetic,Juan Manuel Mujica,Pablo Navarro,Sebastián Agüero  
+ * @author Ivo Vucetic,Juan Manuel Mujica,Pablo Navarro,Sebastiï¿½n Agï¿½ero  
  *<br>
  *Controlador para la ventana de Pacientes.
  */
@@ -39,8 +39,8 @@ public class Controlador_Pacientes implements ActionListener, WindowListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("Agregar")) {
 			try {
-				if(this.vista.getMensajeRangoEtario().equals("Niño")) {
-					Clinica.getInstance().addPaciente(new Niño(this.vista.getDni(),this.vista.getNombre(),this.vista.getApellido(),this.vista.getDomicilio(),this.vista.getCiudad(),this.vista.getTelefono()));
+				if(this.vista.getMensajeRangoEtario().equals("Ninio")) {
+					Clinica.getInstance().addPaciente(new Ninio(this.vista.getDni(),this.vista.getNombre(),this.vista.getApellido(),this.vista.getDomicilio(),this.vista.getCiudad(),this.vista.getTelefono()));
 				} else if(this.vista.getMensajeRangoEtario().equals("Joven")) {
 					Clinica.getInstance().addPaciente(new Joven(this.vista.getDni(),this.vista.getNombre(),this.vista.getApellido(),this.vista.getDomicilio(),this.vista.getCiudad(),this.vista.getTelefono()));
 				} else if(this.vista.getMensajeRangoEtario().equals("Mayor")) {

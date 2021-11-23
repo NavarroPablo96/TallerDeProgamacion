@@ -1,7 +1,7 @@
 package modelo;
 
 /**
- * @author Imanol Vázquez,Juan Manuel Mujica,Francisco Stimmler,Sebastian Agüero   
+ * @author Imanol Vï¿½zquez,Juan Manuel Mujica,Francisco Stimmler,Sebastian Agï¿½ero   
  *<br>
  *Clase que representa a una persona joven. Se extiene de Paciente.
  */
@@ -14,10 +14,10 @@ public class Joven extends Paciente {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Constructor de 7 parámetros donde se setean los atributos de un paciente joven. Se usa super para llamar al constructor de la clase Paciente.
+	 * Constructor de 7 parï¿½metros donde se setean los atributos de un paciente joven. Se usa super para llamar al constructor de la clase Paciente.
 	 * <br>
-	 * <b> Pre: </b> El dni debe ser positivo y entero, debe tener al menos 8 digitos, no se debe escribir con puntos ni comas, sólo números.
-	 * El teléfono debe ser entero y positivo, debe tener al menos 7 dígitos. <br>
+	 * <b> Pre: </b> El dni debe ser positivo y entero, debe tener al menos 8 digitos, no se debe escribir con puntos ni comas, sï¿½lo nï¿½meros.
+	 * El telï¿½fono debe ser entero y positivo, debe tener al menos 7 dï¿½gitos. <br>
 	 * <b> Post: </b> Se crea el obejeto con los parametros dados<br>
 	 * @param dni : String que representa el dni de un paciente.
 	 * @param nombre : String que representa el nombre de un paciente.
@@ -36,11 +36,11 @@ public class Joven extends Paciente {
 	}
 	
 	/**
-	 * Se sobreescribe el método que decide quién tiene prioridad para quedarse en la sala privada de la clínica, si el paciente que ya estaba allí o el que recién llega.
+	 * Se sobreescribe el mï¿½todo que decide quiï¿½n tiene prioridad para quedarse en la sala privada de la clï¿½nica, si el paciente que ya estaba allï¿½ o el que reciï¿½n llega.
 	 * <br>
-	 * <b>Pre: </b> El parámetro otro debe ser distinto de null.<br>
-	 * @param otro: parámetro de tipo Persona, contra el que se decidirá la prioridad.
-	 * @return devuelve si el paciente que recién llega tiene prioridad contra un joven.
+	 * <b>Pre: </b> El parï¿½metro otro debe ser distinto de null.<br>
+	 * @param otro: parï¿½metro de tipo Persona, contra el que se decidirï¿½ la prioridad.
+	 * @return devuelve si el paciente que reciï¿½n llega tiene prioridad contra un joven.
 	 */
 
 	@Override
@@ -49,17 +49,17 @@ public class Joven extends Paciente {
 	}
 	
 	/**
-	 * Se sobreescribe método que decide si el paciente que ya está en la sala privada tiene prioridad de quedarse allí, contra un niño que recién ingresa a la clínica.
-	 * @return verdadero. Se tiene prioridad contra un niño.
+	 * Se sobreescribe mï¿½todo que decide si el paciente que ya estï¿½ en la sala privada tiene prioridad de quedarse allï¿½, contra un niï¿½o que reciï¿½n ingresa a la clï¿½nica.
+	 * @return verdadero. Se tiene prioridad contra un niï¿½o.
 	 */
 	
 	@Override
-	public boolean prioridadNiño() {
+	public boolean prioridadNinio() {
 		return true;
 	}
 
 	/**
-	 * Se sobreescribe método que decide si el paciente que ya está en la sala privada tiene prioridad de quedarse allí, contra un joven que recién ingresa a la clínica.
+	 * Se sobreescribe mï¿½todo que decide si el paciente que ya estï¿½ en la sala privada tiene prioridad de quedarse allï¿½, contra un joven que reciï¿½n ingresa a la clï¿½nica.
 	 * @return falso. no se tiene prioridad contra un joven.
 	 */
 	
@@ -69,12 +69,17 @@ public class Joven extends Paciente {
 	}
 
 	/**
-	 * Se sobreescribe método que decide si el paciente que ya está en la sala privada tiene prioridad de quedarse allí, contra un mayor que recién ingresa a la clínica.
+	 * Se sobreescribe mï¿½todo que decide si el paciente que ya estï¿½ en la sala privada tiene prioridad de quedarse allï¿½, contra un mayor que reciï¿½n ingresa a la clï¿½nica.
 	 * @return falso. No se tiene prioridad contra un mayor.
 	 */
 	
 	@Override
 	public boolean prioridadMayor() {
+		return false;
+	}
+
+	@Override
+	public boolean esMayor() {
 		return false;
 	}
 

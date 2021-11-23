@@ -12,7 +12,7 @@ import modelo.Internacion;
 import modelo.Joven;
 import modelo.Mayor;
 import modelo.MedicoFactory;
-import modelo.Niño;
+import modelo.Ninio;
 import modelo.Paciente;
 import modelo.Prestacion;
 import modelo.Privada;
@@ -95,7 +95,7 @@ public class Main
 //	Controlador controlador = new Controlador();
 
 	Paciente paciente3 = new Joven("37892345", "Pedro", "A", "Luro920", "mdp", "459-4312");
-	Paciente paciente4 = new Niño("20892345", "Marcos", "Apel", "Const92", "mdp", "459-4312");
+	Paciente paciente4 = new Ninio("20892345", "Marcos", "Apel", "Const92", "mdp", "459-4312");
 	
 	Clinica.getInstance().Ingreso(paciente3);
 	Clinica.getInstance().Ingreso(paciente4);

@@ -14,7 +14,7 @@ import modelo.Joven;
 import modelo.Mayor;
 import modelo.Medico;
 import modelo.MedicoFactory;
-import modelo.Niño;
+import modelo.Ninio;
 import modelo.Paciente;
 import persistencia.PersistenciaGeneral;
 import vista.IVista;
@@ -24,7 +24,7 @@ import vista.Ventana_Medicos;
 import vista.Ventana_Paciente;
 
 /**
- * @author Ivo Vucetic,Juan Manuel Mujica,Pablo Navarro,Sebastián Agüero   
+ * @author Ivo Vucetic,Juan Manuel Mujica,Pablo Navarro,Sebastiï¿½n Agï¿½ero   
  *<br>
  *Controlador para la ventana de Medicos.
  */
