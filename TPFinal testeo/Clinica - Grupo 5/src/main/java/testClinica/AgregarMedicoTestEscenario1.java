@@ -16,6 +16,7 @@ import excepciones.NoExistePosgradoException;
 import excepciones.NoHayContratacionException;
 import excepciones.NoHayEspecialidadException;
 import factory.*;
+import factory.MedicoFactory;
 import interf.*;
 import modelo.*;
 
