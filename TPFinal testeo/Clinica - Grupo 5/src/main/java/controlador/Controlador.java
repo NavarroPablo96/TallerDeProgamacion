@@ -122,7 +122,7 @@ public class Controlador implements ActionListener{
 		GregorianCalendar desde, hasta;
 		desde= new GregorianCalendar(anioI,mesI,diaI);
 		hasta= new GregorianCalendar(anioF,mesF,diaF);
-		Clinica.getInstance().muestraFacturaRangoFechas(desde,hasta);
+		Clinica.getInstance().muestraFacturaRangoFechas(desde, hasta);
 	}
 	
 	

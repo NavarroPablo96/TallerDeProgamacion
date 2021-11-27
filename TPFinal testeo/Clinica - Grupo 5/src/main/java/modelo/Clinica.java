@@ -2,6 +2,7 @@ package modelo;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -655,6 +656,8 @@ public class Clinica
 			}
 		}
 	}
+	
+	
 
 	public String muestraFecha(GregorianCalendar fecha)
 	{
@@ -669,6 +672,60 @@ public class Clinica
 		return colaDeEspera;
 	}
 	
+	/**
+	 * <b>PRE: <b>Parametros distinto de null.<br>La fecha esta validada.<br>El numero de factura es > 0.<br>.La lista de insumos puede ser null, vacia o 
+	 * 			con elementos.<br>
+	 * 			 
+	 * @param numeroDeFactura
+	 * @param fechaDeSolicitud
+	 * @param listDeInsumos
+	 * @return
+	 */
+	public double calculoImporteAdicionales(int numeroDeFactura, Calendar fechaDeSolicitud, ArrayList<Double> listaDeInsumos) {
+		double importeTotal, subTotalImpar, importeParcial;
+		GregorianCalendar fechaDeFactura;
+		int dias,i;
+		double A=0.7, B=0.4, C=1.3, D=0.85;
 	
+		if(numeroDeFactura <= this.facturas.size()) { //si numeroDeFactura existe
+			
+			fechaDeFactura = this.facturas.get(numeroDeFactura-1).fecha;	
+			dias =  daysBetween(fechaDeFactura.getTime(),fechaDeSolicitud.getTime());
+			if(dias<10) {
+				subTotalImpar=0;
+				for(i=0;i<this.facturas.get(numeroDeFactura-1).getPrestaciones().size();i=i+2) {
+					subTotalImpar+=this.facturas.get(numeroDeFactura-1).getPrestaciones().get(i).getSubTotal();
+				}
+				importeParcial = this.facturas.get(numeroDeFactura-1).totalFactura()-subTotalImpar*A;
+			}
+			else {
+				importeParcial = this.facturas.get(numeroDeFactura-1).totalFactura()*B;
+			}
+			
+			
+			if(this.facturas.get(numeroDeFactura-1).getPaciente().getClass().getName()=="Mayor") {
+				importeTotal = importeParcial * C; 
+			}
+			else {
+				importeTotal = importeParcial * D;
+			}
+			
+			double aleatorio = Math.random()*30+1;
+			if(aleatorio!=fechaDeFactura.get(Calendar.DATE)) {
+				for(i=0;i<listaDeInsumos.size();i++) {
+					importeTotal+=listaDeInsumos.get(i);
+				}
+			}
+		}
+		else 
+			importeTotal=0;
+		
+		return importeTotal;
+		
+	}
+	
+    public static int daysBetween(Date d1, Date d2){
+             return (int)( (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
+     }
 
 }

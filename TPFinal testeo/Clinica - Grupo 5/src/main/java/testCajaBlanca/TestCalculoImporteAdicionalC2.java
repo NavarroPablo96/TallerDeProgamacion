@@ -1,4 +1,4 @@
-package testClinica;
+package testCajaBlanca;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
