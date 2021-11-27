@@ -143,6 +143,7 @@ public class Interfaz extends JFrame implements KeyListener{
 		this.textFieldNombrePaciente.addKeyListener(this);
 		panel_9.add(textFieldNombrePaciente);
 		textFieldNombrePaciente.setColumns(10);
+		this.textFieldNombrePaciente.setName("jtNombrePaciente");
 		
 		JPanel panel_30 = new JPanel();
 		panel_7.add(panel_30);
@@ -160,6 +161,7 @@ public class Interfaz extends JFrame implements KeyListener{
 		this.textFieldApellidoPaciente.addKeyListener(this);
 		panel_32.add(textFieldApellidoPaciente);
 		textFieldApellidoPaciente.setColumns(10);
+		this.textFieldApellidoPaciente.setName("jtApellidoPaciente");
 		
 		JPanel panel_33 = new JPanel();
 		panel_7.add(panel_33);
@@ -174,6 +176,7 @@ public class Interfaz extends JFrame implements KeyListener{
 		this.textFieldDNIPaciente.addKeyListener(this);
 		panel_34.add(textFieldDNIPaciente);
 		textFieldDNIPaciente.setColumns(10);
+		this.textFieldDNIPaciente.setName("jtDniPaciente");
 		
 		JPanel panel_35 = new JPanel();
 		panel_7.add(panel_35);
@@ -191,6 +194,7 @@ public class Interfaz extends JFrame implements KeyListener{
 		this.textFieldDomicilioPaciente.addKeyListener(this);
 		panel_37.add(textFieldDomicilioPaciente);
 		textFieldDomicilioPaciente.setColumns(10);
+		this.textFieldDomicilioPaciente.setName("jtDomicilioPaciente");
 		
 		JPanel panel_38 = new JPanel();
 		panel_7.add(panel_38);
@@ -205,6 +209,8 @@ public class Interfaz extends JFrame implements KeyListener{
 		this.textFieldTelefonoPaciente.addKeyListener(this);
 		panel_39.add(textFieldTelefonoPaciente);
 		textFieldTelefonoPaciente.setColumns(10);
+		this.textFieldTelefonoPaciente.setName("jtTelefonoPaciente");
+
 		
 		JPanel panel_40 = new JPanel();
 		panel_7.add(panel_40);
@@ -222,6 +228,8 @@ public class Interfaz extends JFrame implements KeyListener{
 		this.textFieldCiudadPaciente.addKeyListener(this);
 		panel_42.add(textFieldCiudadPaciente);
 		textFieldCiudadPaciente.setColumns(10);
+		this.textFieldCiudadPaciente.setName("jtCiudadPaciente");
+
 		
 		JPanel panel_43 = new JPanel();
 		panel_7.add(panel_43);
@@ -239,12 +247,16 @@ public class Interfaz extends JFrame implements KeyListener{
 		rdbtnNinio = new JRadioButton("Ninio");
 		rdbtnNinio.setSelected(true);
 		panel_44.add(rdbtnNinio);
+		this.rdbtnNinio.setName("rbNinioPaciente");
+
 		
 		rdbtnJoven = new JRadioButton("Joven");
 		panel_44.add(rdbtnJoven);
+		this.rdbtnJoven.setName("rbJovenPaciente");
 		
 		rdbtnMayor = new JRadioButton("Mayor");
 		panel_44.add(rdbtnMayor);
+		this.rdbtnMayor.setName("rbMayorPaciente");
 		
 		
 		ButtonGroup rangoEtario = new ButtonGroup();
@@ -270,6 +282,7 @@ public class Interfaz extends JFrame implements KeyListener{
 		});
 		btnAgregarPaciente.addKeyListener(this);
 		btnAgregarPaciente.setEnabled(false);
+		this.btnAgregarPaciente.setName("btnAgregarPaciente");
 		
 		panel_46.add(btnAgregarPaciente);
 		
@@ -675,11 +688,10 @@ public class Interfaz extends JFrame implements KeyListener{
 
 	
 	
-	
 	/**
 	 * <b>POST:<b> Informa exito o fracaso de la adicion del medico.
 	 * 
-	 * Metodo que valida todos los campos de entrada de la pestaña de medicos e invoca al metodo agregarMedico del controlador.
+	 * Metodo que valida todos los campos de entrada de la pestaï¿½a de medicos e invoca al metodo agregarMedico del controlador.
 	 */
 	
 	protected void agregarMedico() {
@@ -735,7 +747,7 @@ public class Interfaz extends JFrame implements KeyListener{
 	/**
 	 * <b>POST:<b> Informa exito o fracaso del alta del paciente.
 	 * 
-	 * Metodo que valida todos los campos de entrada de la pestaña de pacientes e invoca al metodo altaPaciente del controlador.
+	 * Metodo que valida todos los campos de entrada de la pestaï¿½a de pacientes e invoca al metodo altaPaciente del controlador.
 	 * 
 	 */
 	
@@ -938,8 +950,8 @@ public class Interfaz extends JFrame implements KeyListener{
 	
 	
 	/**
-	 * Metodo que se encarga de bloquear el boton "AGREGAR" correspondiente a la pestaña de pacientes y de forma independiente hace lo mismo con el boton "AGREGAR" de la pestaña de medicos siempre y cuando
-	 * exista al menos un campo de la pestaña que no contengan al menos un caracter ingresado. Basicamente valida que esten todos los campos requeridos llenos.
+	 * Metodo que se encarga de bloquear el boton "AGREGAR" correspondiente a la pestaï¿½a de pacientes y de forma independiente hace lo mismo con el boton "AGREGAR" de la pestaï¿½a de medicos siempre y cuando
+	 * exista al menos un campo de la pestaï¿½a que no contengan al menos un caracter ingresado. Basicamente valida que esten todos los campos requeridos llenos.
 	 */
 	
 	
@@ -1037,11 +1049,6 @@ public class Interfaz extends JFrame implements KeyListener{
 		else
 			return "Mayor";
 	}
-	
-	
-	
-	
-	
 	
 	
 	public String getTextFieldNombreMedico() {
