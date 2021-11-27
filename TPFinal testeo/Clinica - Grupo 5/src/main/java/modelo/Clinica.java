@@ -665,4 +665,10 @@ public class Clinica
 			return fecha.get(Calendar.DATE) + "/" + fecha.get(Calendar.MONTH) + "/" + fecha.get(Calendar.YEAR);
 	}
 
+	public Queue<Paciente> getColaDeEspera() {
+		return colaDeEspera;
+	}
+	
+	
+
 }
