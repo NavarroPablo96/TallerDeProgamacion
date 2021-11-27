@@ -57,6 +57,14 @@ public class Factura implements Serializable {
 	
 	
 	
+	public static int getCantFacturas() {
+		return cantFacturas;
+	}
+
+	public static void setCantFacturas(int cantFacturas) {
+		Factura.cantFacturas = cantFacturas;
+	}
+
 	/**
 	 * <b>PRE:</b> Objeto Imedico distinto de null <br>
 	 * Muestra todas las prestacion de un medico de una factura determinada<br>.

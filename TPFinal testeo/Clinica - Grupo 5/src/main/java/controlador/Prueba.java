@@ -18,7 +18,6 @@ public class Prueba {
 
 		Clinica unaClinica = Clinica.getInstance();
 		unaClinica.setNombre("CLINICA BERAZATEGUI");
-		
 		CargaYDescarga persistencia = new CargaYDescarga();
 		persistencia.leerDatos();
 

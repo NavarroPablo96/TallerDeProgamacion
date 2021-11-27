@@ -1,7 +1,6 @@
 package testCajaBlanca;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -48,8 +47,7 @@ public class TestCalculoImporteAdicionalC2 {
 		
 		facturas.add(factura);
 		
-		Clinica.getInstance().setFacturas(facturas);
-			
+		Clinica.getInstance().setFacturas(facturas);	
 	}
 
 	@After
