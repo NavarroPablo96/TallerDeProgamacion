@@ -1,4 +1,4 @@
-package testModelo;
+package testClinica;
 
 import static org.junit.Assert.fail;
 
@@ -6,17 +6,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import excepciones.MedicoNoEncontradoException;
 import excepciones.PacienteNoEncontradoExcepcion;
 import modelo.Clinica;
 
-public class removerMedicoTestE1
+public class removerPacienteTestE1
 {
 	private Clinica clinica; 
 	
 	
 	/**
-	 * Sala medicos vacia.
+	 * Sala pacientes vacia.
 	 */
 	@Before
 	public void setUp() {
@@ -29,32 +28,32 @@ public class removerMedicoTestE1
 	}
 	
 	/**
-	 * Testea que arroje MedicoNoEncontradoExcepcion al querer quitar
-	 * un medico con dni valido de una coleccion vacia.
+	 * Testea que arroje PacienteNoEncontradoExcepcion al querer quitar
+	 * un paciente con dni valido de una coleccion vacia.
 	 */
 	@Test
 	public void  test_dnivalido() {
 		try
 		{
-			clinica.removerMedico("45652168");
-			fail("No deberia quitar si la sala estaba vacia.");
-		} catch (MedicoNoEncontradoException e)
+			clinica.removerPaciente("465543218");
+			fail("No deberia quitar si la coleccion esta vacia.");
+		} catch (PacienteNoEncontradoExcepcion e)
 		{
 			e.printStackTrace();
 		}
 	}
 		
 	/**
-	 * Testea que arroje MedicoNoEncontradoExcepcion al querer quitar
-	 * un medico con dni fuera de rango de una coleccion vacia.
+	 * Testea que arroje PacienteNoEncontradoExcepcion al querer quitar
+	 * un paciente con dni fuera de rango de una coleccion vacia.
 	 */
 	@Test
 	public void test_dniFueraDeRango() {
 		try
 		{
-			clinica.removerMedico("45234235235");
+			clinica.removerPaciente("45234235235");
 			fail("No deberia quitar si la sala estaba vacia.");
-		} catch (MedicoNoEncontradoException e)
+		} catch (PacienteNoEncontradoExcepcion e)
 		{
 			e.printStackTrace();
 		}
